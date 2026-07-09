@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "npm run css:watch",
     "build": "npm run css:build && npm run js:minify",
-    "css:watch": "tailwindcss -i ./assets/css/main-source.css -o ./assets/css/main.css --watch",
-    "css:build": "NODE_ENV=production tailwindcss -i ./assets/css/main-source.css -o ./assets/css/main.css --minify",
-    "js:minify": "terser assets/js/main.js -o assets/js/main.min.js --compress --mangle",
+    "css:watch": "node node_modules/tailwindcss/lib/cli.js -i ./assets/css/main-source.css -o ./assets/css/main.css --watch",
+    "css:build": "node node_modules/tailwindcss/lib/cli.js -i ./assets/css/main-source.css -o ./assets/css/main.css --minify",
+    "js:minify": "node node_modules/terser/bin/terser assets/js/main.js -o assets/js/main.min.js --compress --mangle",
     "optimize:images": "node scripts/optimize-images.js",
     "generate:sitemap": "node scripts/generate-sitemap.js"
   },

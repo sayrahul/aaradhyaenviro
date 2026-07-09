@@ -12,8 +12,6 @@ const pages = [
   { url: '/contact.html', priority: '0.9', changefreq: 'monthly' },
   { url: '/products.html', priority: '0.8', changefreq: 'weekly' },
   { url: '/gallery.html', priority: '0.6', changefreq: 'monthly' },
-  { url: '/extinguishers.html', priority: '0.7', changefreq: 'monthly' },
-  { url: '/fire-systems.html', priority: '0.7', changefreq: 'monthly' },
   { url: '/privacy-policy.html', priority: '0.3', changefreq: 'yearly' },
   { url: '/404.html', priority: '0.1', changefreq: 'yearly' }
 ];
@@ -36,15 +34,7 @@ const servicePages = [
   'plastic-epr-compliance',
   'operation-maintenance',
   'compliance-training',
-  'detector-systems',
-  'sprinkler-systems',
-  'passive-fire-protection',
-  'annual-maintenance',
-  'engineering-services-consultancy',
-  'industrial-pumps',
-  'nucleonic-material',
-  'system-design-drawing',
-  'system-integrator'
+  'nucleonic-material'
 ];
 
 servicePages.forEach(page => {
