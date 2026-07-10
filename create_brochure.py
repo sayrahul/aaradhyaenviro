@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -781,3 +783,9 @@
     </script>
 </body>
 </html>
+"""
+
+with open('brochure.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Created beautifully redesigned brochure.html without certifications")
