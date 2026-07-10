@@ -33,6 +33,11 @@
             font-family: 'Outfit', sans-serif;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         /* A4 Page Dimensions and Layout */
         .a4-page {
             width: 210mm;
@@ -161,6 +166,27 @@
             background-image: radial-gradient(circle at 100% 0%, #f0fdf4 0%, #ffffff 70%), 
                               radial-gradient(circle at 0% 100%, #f0fdf9 0%, #ffffff 70%);
         }
+        @media (max-width: 840px) {
+            body {
+                padding: 0 12px !important;
+            }
+            .a4-page {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                min-height: auto !important;
+                padding: 1.5rem 1rem !important;
+                margin: 1.5rem 0 !important;
+                border-radius: 16px !important;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03) !important;
+            }
+            .page-header {
+                margin-bottom: 15px !important;
+            }
+            .page-content {
+                display: block !important;
+            }
+        }
     </style>
 </head>
 
@@ -192,9 +218,9 @@
 
         <!-- PAGE 1: COVER PAGE (RESTYLED ASYMMETRIC SPLIT LAYOUT) -->
         <div class="a4-page relative overflow-hidden" style="padding: 0; display: block;">
-            <div class="h-full w-full flex">
+            <div class="h-full w-full flex flex-col md:flex-row">
                 <!-- Left Asymmetric Panel (Teal Dark Slate) -->
-                <div class="w-7/12 bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white p-12 flex flex-col justify-between relative overflow-hidden">
+                <div class="w-full md:w-7/12 bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white p-6 md:p-12 flex flex-col justify-between relative overflow-hidden">
                     <!-- Geometric overlay in BG -->
                     <div class="absolute inset-0 opacity-10 pointer-events-none geometric-dots-bg"></div>
                     
@@ -241,7 +267,7 @@
                 </div>
 
                 <!-- Right Asymmetric Panel (Minimalist Canvas Grid) -->
-                <div class="w-5/12 bg-slate-50 p-12 flex flex-col justify-between relative">
+                <div class="w-full md:w-5/12 bg-slate-50 p-6 md:p-12 flex flex-col justify-between relative">
                     <!-- Clean minimal patterns in BG -->
                     <div class="absolute inset-0 opacity-40 pointer-events-none radial-dots-bg"></div>
                     
@@ -277,9 +303,9 @@
             </div>
             
             <div class="page-content">
-                <div class="grid grid-cols-12 gap-8 h-full items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 h-full items-stretch">
                     <!-- Left Column: TOC (Asymmetric 5/12) -->
-                    <div class="col-span-5 bg-slate-50/80 p-6 rounded-2xl border border-slate-200/60 flex flex-col justify-between">
+                    <div class="col-span-1 md:col-span-5 bg-slate-50/80 p-6 rounded-2xl border border-slate-200/60 flex flex-col justify-between">
                         <div>
                             <h2 class="mt-0 pt-0 text-xl font-bold text-slate-900 border-b-2 border-teal-600 pb-2 inline-block">Table of Contents</h2>
                             <ul class="toc-list mt-6 text-xs text-slate-700 font-medium">
@@ -330,7 +356,7 @@
                     </div>
 
                     <!-- Right Column: About Us (Asymmetric 7/12) -->
-                    <div class="col-span-7 flex flex-col justify-between">
+                    <div class="col-span-1 md:col-span-7 flex flex-col justify-between">
                         <div>
                             <h1 class="text-3xl font-extrabold text-teal-900 mt-0">1. About Us</h1>
                             <div class="accent-bar"></div>
@@ -372,7 +398,7 @@
                 <h1 class="text-3xl font-extrabold text-teal-900 mt-0">2. Mission, Vision & Values</h1>
                 <div class="accent-bar"></div>
                 
-                <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div class="bg-gradient-to-br from-teal-800 to-teal-950 text-white p-5 rounded-xl shadow-md relative overflow-hidden border border-teal-700/30">
                         <svg class="absolute -bottom-4 -right-4 w-24 h-24 text-white/5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                         <h3 class="text-yellow-400 mt-0 text-base font-bold uppercase tracking-wider mb-2">Our Mission</h3>
@@ -386,7 +412,7 @@
                 </div>
 
                 <h2 class="text-xl font-bold text-slate-800 mb-4">Core Values</h2>
-                <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     <div class="border-l-4 border-teal-600 pl-4 bg-slate-50/50 p-3 rounded-r-lg border border-slate-100">
                         <h3 class="mt-0 text-sm font-bold text-teal-900 mb-1">Environment & Safety First</h3>
                         <p class="text-[11px] text-slate-500 leading-normal mb-0">Protecting the environment is our top priority. Every solution we design meets the highest EHS standards — not just the minimum legal requirement.</p>
@@ -408,7 +434,7 @@
                 <h1 class="text-2xl font-bold text-teal-900 border-t border-slate-200 pt-6 mt-2">3. Why Choose Aaradhya Enviro</h1>
                 <div class="accent-bar"></div>
                 
-                <div class="grid grid-cols-2 gap-x-8 gap-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                     <div>
                         <h3 class="mt-0 text-sm font-bold text-teal-800 mb-1">Local & National Expertise</h3>
                         <p class="text-[11px] text-slate-500 leading-relaxed mb-0">Headquartered in Chhatrapati Sambhajinagar with a PAN India presence, combining deep, on-ground knowledge of MPCB regulations with the scale to serve clients nationwide.</p>
@@ -457,7 +483,7 @@
                             <span class="bg-teal-700 text-white w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold flex-shrink-0">01</span>
                             <div class="flex-grow">
                                 <h3 class="mt-0 text-base font-bold text-teal-950 mb-2">Legal Compliances (MPCB Consents)</h3>
-                                <div class="grid grid-cols-3 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                                     <div class="col-span-2">
                                         <p class="text-xs mb-1.5"><strong class="text-slate-800">Scope:</strong> CTE (Consent to Establish) and CTO (Consent to Operate) filings and representation.</p>
                                         <p class="text-xs mb-0"><strong class="text-slate-800">Process:</strong> We assess category (Red/Orange/Green), prepare documentation, file on the portal, and handle MPCB liaison.</p>
@@ -477,7 +503,7 @@
                             <span class="bg-teal-700 text-white w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold flex-shrink-0">02</span>
                             <div class="flex-grow">
                                 <h3 class="mt-0 text-base font-bold text-teal-950 mb-2">Environmental Clearances (EC)</h3>
-                                <div class="grid grid-cols-3 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                                     <div class="col-span-2">
                                         <p class="text-xs mb-1.5"><strong class="text-slate-800">Scope:</strong> End-to-end approvals from state committees (SEIAA) and central ministry (MoEFCC).</p>
                                         <p class="text-xs mb-0"><strong class="text-slate-800">Deliverables:</strong> Baseline monitoring, Environmental Impact Assessment (EIA) reports, and public hearing coordination.</p>
@@ -492,7 +518,7 @@
                     </div>
 
                     <!-- Dual Column Services (3 & 4) -->
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm">
                             <h3 class="mt-0 text-base font-bold text-teal-950 mb-2 flex items-center gap-2">
                                 <span class="bg-teal-700 text-white w-6 h-6 flex items-center justify-center rounded-md text-xs font-bold">03</span>
@@ -547,7 +573,7 @@
                     We deliver complete, end-to-end design, fabrication, installation, and commissioning under a single contract. By acting as the sole point of accountability, we eliminate common multi-vendor delays.
                 </p>
 
-                <div class="grid grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Project Box 1 -->
                     <div class="border-t-4 border-teal-600 bg-slate-50/80 p-5 rounded-b-xl border border-slate-200/50 shadow-sm flex flex-col justify-between h-[210px]">
                         <div>
@@ -618,7 +644,7 @@
                 </div>
                 <div class="accent-bar"></div>
 
-                <div class="grid grid-cols-2 gap-x-8 gap-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                     <!-- Monitoring Unit 1 -->
                     <div>
                         <h3 class="mt-0 text-base font-bold text-teal-950 mb-2 flex items-center gap-2">
@@ -682,7 +708,7 @@
                     <p class="text-xs text-teal-100 leading-relaxed mb-3">
                         Installing treatment systems is only the first step. Consistent operations are essential to maintain compliance limits. We provide complete chemical dosing, daily logging, and EHS training for plant personnel.
                     </p>
-                    <div class="grid grid-cols-3 gap-4 text-center mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mt-2">
                         <div class="bg-teal-900/60 p-2.5 rounded-lg border border-teal-700/30">
                             <span class="block text-yellow-400 font-bold text-sm">24/7</span>
                             <span class="text-[10px] text-teal-200">Emergency Support</span>
@@ -714,7 +740,7 @@
             </div>
             
             <div class="page-content justify-between">
-                <div class="grid grid-cols-2 gap-8 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6">
                     <!-- Products Column -->
                     <div>
                         <h1 class="text-2xl font-bold text-teal-900 mt-0 mb-3">Our Products</h1>
@@ -758,7 +784,7 @@
                 <!-- Trusted Clients Grid -->
                 <div class="bg-slate-900 text-white p-5 rounded-xl shadow-lg border border-slate-800 mb-6 flex flex-col justify-center">
                     <h3 class="text-yellow-400 mt-0 text-center text-sm font-bold uppercase tracking-wider mb-4">Trusted by 500+ Clients PAN India</h3>
-                    <div class="grid grid-cols-3 gap-3 text-center text-[11px] font-medium text-slate-200">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 text-center text-[11px] font-medium text-slate-200">
                         <div class="bg-slate-800/80 p-2 rounded-lg border border-slate-700/30">Bai-Kakaji Group</div>
                         <div class="bg-slate-800/80 p-2 rounded-lg border border-slate-700/30">S J Contracts Pvt. Ltd.</div>
                         <div class="bg-slate-800/80 p-2 rounded-lg border border-slate-700/30">Renuka Sugar Renapur</div>
@@ -769,12 +795,12 @@
                 </div>
 
                 <!-- Final Contact CTA (Premium Redesigned Corporate Box) -->
-                <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-xl flex justify-between items-center border border-teal-800/40">
+                <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-teal-800/40">
                     <div class="text-left">
                         <h2 class="text-lg font-bold text-yellow-400 mt-0 mb-1">Ready to Ensure Compliance?</h2>
                         <p class="text-teal-100 text-xs mb-0">Contact our environmental experts today for a free site assessment.</p>
                     </div>
-                    <div class="flex flex-col items-end text-right">
+                    <div class="flex flex-col items-start md:items-end text-left md:text-right">
                         <a href="tel:+919975929212" class="text-xl font-black text-white hover:text-emerald-400 transition-colors duration-200">+91 99759 29212</a>
                         <a href="mailto:info@aaradhyaenviro.com" class="text-xs text-emerald-400 hover:underline mt-0.5">info@aaradhyaenviro.com</a>
                     </div>
