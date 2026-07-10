@@ -688,15 +688,28 @@
 
             const element = document.getElementById('pdf-content');
             
+            // Temporarily force exact A4 dimensions and remove margins/shadows for perfect PDF capture
+            const pages = element.querySelectorAll('.a4-page');
+            const originalStyles = [];
+            pages.forEach(page => {
+                originalStyles.push(page.getAttribute('style') || '');
+                page.style.cssText = 'margin: 0 !important; box-shadow: none !important; width: 210mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; border-radius: 0 !important; page-break-after: always;';
+            });
+            
             var opt = {
                 margin:       0,
                 filename:     'Aaradhya_Enviro_Brochure.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, windowWidth: 1200 }, // Forces desktop layout for the PDF
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                image:        { type: 'jpeg', quality: 1.0 },
+                html2canvas:  { scale: 2, useCORS: true, windowWidth: 1024 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: 'css', after: '.a4-page' }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
+                // Restore original styles
+                pages.forEach((page, index) => {
+                    page.style.cssText = originalStyles[index];
+                });
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
