@@ -1453,14 +1453,14 @@
 
             try {
                 const formData = new FormData(form);
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
                     body: formData
                 });
                 
-                const result = await response.json();
-                
-                if (result.result === 'success') {
+                // When using no-cors, we assume success if no network error occurred
+                if (true) {
                     // Success UI
                     form.reset();
                     formMessage.className = 'mt-6 p-4 rounded-xl text-center bg-emerald-50 border border-emerald-200 text-emerald-800 transition-all duration-500 transform scale-100 opacity-100';
