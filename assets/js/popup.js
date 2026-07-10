@@ -80,7 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <!-- Success Message -->
                         <div id="popupSuccessMsg" class="hidden absolute inset-0 bg-white z-20 flex flex-col items-center justify-center p-8 text-center transform scale-95 opacity-0 transition-all duration-500 rounded-r-3xl">
-                            <div class="relative">
+                            <!-- Dismiss X for Success Screen -->
+                            <button id="closeSuccessBtn" class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 hover:bg-gray-100 rounded-full focus:outline-none" aria-label="Close popup">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            <div class="relative mt-4">
                                 <div class="absolute inset-0 bg-emerald-200 rounded-full animate-ping opacity-20"></div>
                                 <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6 relative z-10">
                                     <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -99,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const popup = document.getElementById('freeConsultationPopup');
         const modal = document.getElementById('popupModal');
         const closeBtn = document.getElementById('closePopupBtn');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
         const backdrop = document.getElementById('popupBackdrop');
         const form = document.getElementById('consultationForm');
         const submitBtn = document.getElementById('popupSubmitBtn');
@@ -112,65 +120,50 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('scale-100', 'opacity-100');
         });
 
+        let autoCloseTimeout;
+
         const closePopup = () => {
             sessionStorage.setItem('consultationPopupDismissed', 'true');
             popup.classList.remove('opacity-100');
             popup.classList.add('opacity-0');
             modal.classList.remove('scale-100');
             modal.classList.add('scale-95');
+            clearTimeout(autoCloseTimeout);
             setTimeout(() => popup.remove(), 500);
         };
 
         closeBtn.addEventListener('click', closePopup);
+        closeSuccessBtn.addEventListener('click', closePopup);
         backdrop.addEventListener('click', closePopup);
 
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZ1wn0rP0H-SONl9myYZWVW-7OEXoB9j4H_hr-E3mRlOGvfa2YSgfVNssgZBruDeqA/exec';
             
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `
-                <span class="relative z-10 flex items-center">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Processing...
-                </span>
-            `;
 
-            try {
-                const formData = new FormData(form);
-                await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: formData
-                });
-                
-                // Show success
-                sessionStorage.setItem('consultationPopupDismissed', 'true');
-                successMsg.classList.remove('hidden');
-                
-                // Trigger reflow
-                void successMsg.offsetWidth;
-                
-                successMsg.classList.remove('scale-95', 'opacity-0');
-                successMsg.classList.add('scale-100', 'opacity-100');
+            const formData = new FormData(form);
+            
+            // Fire and forget (do not await) to make UI instant
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).catch(console.error);
+            
+            // Show success immediately (0 delay!)
+            sessionStorage.setItem('consultationPopupDismissed', 'true');
+            successMsg.classList.remove('hidden');
+            
+            // Trigger reflow for animation
+            void successMsg.offsetWidth;
+            
+            successMsg.classList.remove('scale-95', 'opacity-0');
+            successMsg.classList.add('scale-100', 'opacity-100');
 
-                setTimeout(closePopup, 4000);
-                
-            } catch (error) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span class="relative z-10">Error. Try Again</span>';
-                submitBtn.classList.replace('bg-teal-600', 'bg-red-600');
-                submitBtn.classList.replace('hover:bg-teal-700', 'hover:bg-red-700');
-                setTimeout(() => {
-                    submitBtn.innerHTML = '<span class="relative z-10 flex items-center">Request Call Back</span>';
-                    submitBtn.classList.replace('bg-red-600', 'bg-teal-600');
-                    submitBtn.classList.replace('hover:bg-red-700', 'hover:bg-teal-700');
-                }, 3000);
-            }
+            // Auto close faster (after 2.5 seconds)
+            autoCloseTimeout = setTimeout(closePopup, 2500);
         });
     }
 });
