@@ -816,7 +816,12 @@
     </div> <!-- End pdf-content -->
 
     <script>
+        let isGeneratingPDF = false;
+
         function downloadPDF() {
+            if (isGeneratingPDF) return;
+            isGeneratingPDF = true;
+            
             const btn = document.getElementById('download-btn');
             btn.disabled = true;
 
@@ -838,7 +843,7 @@
                 originalStyles.push(page.getAttribute('style') || '');
                 const originalDisplay = page.style.display || 'flex';
                 const originalPadding = page.style.padding || '20mm';
-                page.style.cssText = `margin: 0 !important; box-shadow: none !important; width: 210mm !important; height: 297mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; border-radius: 0 !important; page-break-after: always; display: ${originalDisplay} !important; padding: ${originalPadding} !important;`;
+                page.style.cssText = `margin: 0 !important; box-shadow: none !important; width: 210mm !important; height: 297mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; border-radius: 0 !important; page-break-after: always; display: ${originalDisplay} !important; padding: ${originalPadding} !important; transform: none !important;`;
             });
 
             var opt = {
@@ -857,6 +862,10 @@
                 });
                 clonedStyles.forEach(clone => clone.remove());
                 btn.disabled = false;
+                isGeneratingPDF = false;
+                
+                // Re-apply mobile scale if on mobile
+                adjustMobileScale();
             }).catch((err) => {
                 console.error("PDF generation error: ", err);
                 pages.forEach((page, index) => {
@@ -864,8 +873,57 @@
                 });
                 clonedStyles.forEach(clone => clone.remove());
                 btn.disabled = false;
+                isGeneratingPDF = false;
+                adjustMobileScale();
             });
         }
+
+        // Non-intrusive mobile scaling logic (fits both width and height, prevents horizontal scroll)
+        function adjustMobileScale() {
+            if (isGeneratingPDF) return;
+            
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+            const baseWidth = 840; // Desktop breakpoint
+            const pages = document.querySelectorAll('.a4-page');
+            
+            if (containerWidth < baseWidth) {
+                // Unscaled A4 dimensions in pixels: width is 794px, height is 1122px
+                const targetWidth = 794;
+                const targetHeight = 1122;
+                
+                // Compute scale factor for width and height (leaving safety margins)
+                const scaleX = (containerWidth - 24) / targetWidth;
+                const scaleY = (containerHeight - 48) / targetHeight;
+                
+                // Fit within both width and height boundaries
+                const scale = Math.min(scaleX, scaleY, 1);
+                
+                pages.forEach((page) => {
+                    page.style.transform = `scale(${scale})`;
+                    page.style.transformOrigin = 'top center';
+                    page.style.margin = '0 auto';
+                    
+                    // Compensate for the empty vertical space left by the CSS transform scale
+                    const offset = targetHeight * (1 - scale);
+                    page.style.marginBottom = `-${offset - 16}px`;
+                });
+            } else {
+                pages.forEach((page) => {
+                    page.style.transform = '';
+                    page.style.transformOrigin = '';
+                    page.style.margin = '';
+                    page.style.marginBottom = '';
+                });
+            }
+        }
+
+        window.addEventListener('resize', adjustMobileScale);
+        document.addEventListener('DOMContentLoaded', () => {
+            adjustMobileScale();
+            setTimeout(adjustMobileScale, 100);
+            setTimeout(adjustMobileScale, 500);
+        });
     </script>
 </body>
 
