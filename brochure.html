@@ -33,31 +33,13 @@
             font-family: 'Outfit', sans-serif;
         }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        /* Page wrappers for responsive scaling */
-        .page-wrapper {
-            width: 210mm;
-            height: 297mm;
-            margin: 0 auto 2.5rem auto;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
         /* A4 Page Dimensions and Layout */
         .a4-page {
             width: 210mm;
             min-height: 297mm;
             height: 297mm;
             padding: 20mm;
-            margin: 0;
+            margin: 2rem auto;
             background: #ffffff;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
             position: relative;
@@ -179,16 +161,6 @@
             background-image: radial-gradient(circle at 100% 0%, #f0fdf4 0%, #ffffff 70%), 
                               radial-gradient(circle at 0% 100%, #f0fdf9 0%, #ffffff 70%);
         }
-        /* Mobile Responsive Scaling rules */
-        @media (max-width: 840px) {
-            .page-wrapper {
-                margin: 0.5rem auto !important;
-            }
-            .a4-page {
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
-                border-radius: 12px !important;
-            }
-        }
     </style>
 </head>
 
@@ -219,8 +191,7 @@
     <div id="pdf-content">
 
         <!-- PAGE 1: COVER PAGE (RESTYLED ASYMMETRIC SPLIT LAYOUT) -->
-        <div class="page-wrapper">
-            <div class="a4-page relative overflow-hidden" style="padding: 0; display: block;">
+        <div class="a4-page relative overflow-hidden" style="padding: 0; display: block;">
             <div class="h-full w-full flex">
                 <!-- Left Asymmetric Panel (Teal Dark Slate) -->
                 <div class="w-7/12 bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white p-12 flex flex-col justify-between relative overflow-hidden">
@@ -296,10 +267,9 @@
                 </div>
             </div>
         </div>
-        </div>
-    <!-- PAGE 2: TABLE OF CONTENTS & ABOUT -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+
+        <!-- PAGE 2: TABLE OF CONTENTS & ABOUT -->
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -389,11 +359,9 @@
                 <span>PAGE 01</span>
             </div>
         </div>
-        </div></div>
 
         <!-- PAGE 3: MISSION, VISION & WHY CHOOSE US -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -466,11 +434,9 @@
                 <span>PAGE 02</span>
             </div>
         </div>
-        </div></div>
 
         <!-- PAGE 4: SERVICES - COMPLIANCE & CONSULTANCY -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -561,11 +527,9 @@
                 <span>PAGE 03</span>
             </div>
         </div>
-        </div></div>
 
         <!-- PAGE 5: SERVICES - TURNKEY PROJECTS -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -638,11 +602,9 @@
                 <span>PAGE 04</span>
             </div>
         </div>
-        </div></div>
 
         <!-- PAGE 6: TESTING, MONITORING & OPERATIONS -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -742,11 +704,9 @@
                 <span>PAGE 05</span>
             </div>
         </div>
-        </div></div>
 
         <!-- PAGE 7: PRODUCTS, SERVICE CITIES, CLIENTS & CONTACT -->
-        <div class="page-wrapper">
-            <div class="a4-page pdf-page-bg">
+        <div class="a4-page pdf-page-bg">
             <div class="watermark">AARADHYA</div>
             <div class="page-header">
                 <span>Aaradhya Enviro</span>
@@ -827,24 +787,14 @@
             </div>
         </div>
 
-    </div>
-        </div></div> <!-- End pdf-content -->
+    </div> <!-- End pdf-content -->
 
-        <script>
-        let isGeneratingPDF = false;
-
+    <script>
         function downloadPDF() {
-            if (isGeneratingPDF) return;
-            isGeneratingPDF = true;
-            
             const btn = document.getElementById('download-btn');
             btn.disabled = true;
 
             const element = document.getElementById('pdf-content');
-
-            // Temporarily hide mobile page indicator
-            const indicator = document.getElementById('mobile-page-indicator');
-            if (indicator) indicator.style.display = 'none';
 
             // Temporarily append all styles and link tags into the element so they are cloned and rendered by html2pdf
             const styles = document.querySelectorAll('style, link[rel="stylesheet"]');
@@ -856,22 +806,13 @@
             });
 
             // Temporarily force exact A4 dimensions and remove margins/shadows for perfect PDF capture
-            const wrappers = element.querySelectorAll('.page-wrapper');
             const pages = element.querySelectorAll('.a4-page');
-            
-            const originalWrapperStyles = [];
-            const originalPageStyles = [];
-            
-            wrappers.forEach((wrapper) => {
-                originalWrapperStyles.push(wrapper.getAttribute('style') || '');
-                wrapper.style.cssText = 'margin: 0 !important; padding: 0 !important; width: 210mm !important; height: 297mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; box-shadow: none !important; transform: none !important; overflow: visible !important;';
-            });
-            
+            const originalStyles = [];
             pages.forEach((page) => {
-                originalPageStyles.push(page.getAttribute('style') || '');
+                originalStyles.push(page.getAttribute('style') || '');
                 const originalDisplay = page.style.display || 'flex';
                 const originalPadding = page.style.padding || '20mm';
-                page.style.cssText = `margin: 0 !important; box-shadow: none !important; width: 210mm !important; height: 297mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; border-radius: 0 !important; page-break-after: always; display: ${originalDisplay} !important; padding: ${originalPadding} !important; transform: none !important;`;
+                page.style.cssText = `margin: 0 !important; box-shadow: none !important; width: 210mm !important; height: 297mm !important; min-height: 297mm !important; max-width: none !important; border: none !important; border-radius: 0 !important; page-break-after: always; display: ${originalDisplay} !important; padding: ${originalPadding} !important;`;
             });
 
             var opt = {
@@ -880,130 +821,26 @@
                 image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { scale: 2, useCORS: true, windowWidth: 1024 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: 'css', after: '.page-wrapper' }
+                pagebreak: { mode: 'css', after: '.a4-page' }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
-                // Restore original styles
-                wrappers.forEach((wrapper, index) => {
-                    wrapper.setAttribute('style', originalWrapperStyles[index]);
-                });
+                // Restore original styles and remove cloned styles
                 pages.forEach((page, index) => {
-                    page.setAttribute('style', originalPageStyles[index]);
+                    page.setAttribute('style', originalStyles[index]);
                 });
                 clonedStyles.forEach(clone => clone.remove());
-                if (indicator) indicator.style.display = '';
                 btn.disabled = false;
-                isGeneratingPDF = false;
-                
-                // Trigger mobile scale recalculation after restoring original styles
-                adjustMobileScale();
             }).catch((err) => {
                 console.error("PDF generation error: ", err);
-                wrappers.forEach((wrapper, index) => {
-                    wrapper.setAttribute('style', originalWrapperStyles[index]);
-                });
                 pages.forEach((page, index) => {
-                    page.setAttribute('style', originalPageStyles[index]);
+                    page.setAttribute('style', originalStyles[index]);
                 });
                 clonedStyles.forEach(clone => clone.remove());
-                if (indicator) indicator.style.display = '';
                 btn.disabled = false;
-                isGeneratingPDF = false;
-                adjustMobileScale();
             });
         }
-
-        // Responsive Scaling Logic for Mobile Devices (Fit width and height, prevent horizontal scroll)
-        function adjustMobileScale() {
-            if (isGeneratingPDF) return; // Do not alter layouts while PDF is generating
-            
-            const containerWidth = window.innerWidth;
-            const containerHeight = window.innerHeight;
-            const baseWidth = 840; // Desktop breakpoint
-            const wrappers = document.querySelectorAll('.page-wrapper');
-            const pages = document.querySelectorAll('.a4-page');
-            
-            if (containerWidth < baseWidth) {
-                // A4 dimensions in pixels: width is 794px, height is 1122px
-                const targetWidth = 794;
-                const targetHeight = 1122;
-                
-                // Calculate scale factor for width and height (leaving padding)
-                const scaleX = (containerWidth - 24) / targetWidth;
-                const scaleY = (containerHeight - 48) / targetHeight; // 48px padding for safe view height
-                
-                // Fit within both width and height boundaries
-                const scale = Math.min(scaleX, scaleY, 1);
-                
-                wrappers.forEach((wrapper, index) => {
-                    const page = pages[index];
-                    
-                    // Scale the A4 page container down to fit the screen
-                    page.style.transform = `scale(${scale})`;
-                    page.style.transformOrigin = 'top center';
-                    page.style.margin = '0';
-                    
-                    // Adjust wrapper size to matches the scaled dimensions perfectly, preventing whitespace gaps and overflow
-                    wrapper.style.height = `${targetHeight * scale}px`; 
-                    wrapper.style.width = `${targetWidth * scale}px`;
-                    wrapper.style.overflow = 'hidden';
-                });
-            } else {
-                // Restore desktop default states
-                wrappers.forEach((wrapper, index) => {
-                    const page = pages[index];
-                    page.style.transform = '';
-                    page.style.transformOrigin = '';
-                    page.style.margin = '';
-                    wrapper.style.height = '';
-                    wrapper.style.width = '';
-                    wrapper.style.overflow = '';
-                });
-            }
-            updateActivePageIndicator();
-        }
-
-        let currentPageIndex = 0;
-        const wrappersList = document.querySelectorAll('.page-wrapper');
-        
-        function updateActivePageIndicator() {
-            const scrollPos = window.scrollY + (window.innerHeight / 2);
-            const wrappersListLocal = document.querySelectorAll('.page-wrapper');
-            wrappersListLocal.forEach((wrapper, index) => {
-                const top = wrapper.offsetTop;
-                const bottom = top + wrapper.offsetHeight;
-                if (scrollPos >= top && scrollPos <= bottom) {
-                    currentPageIndex = index;
-                    const display = document.getElementById('page-num-display');
-                    if (display) display.innerText = `PAGE ${index + 1} / 7`;
-                }
-            });
-        }
-        
-        function prevPage() {
-            const wrappersListLocal = document.querySelectorAll('.page-wrapper');
-            if (currentPageIndex > 0) {
-                currentPageIndex--;
-                wrappersListLocal[currentPageIndex].scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        function nextPage() {
-            const wrappersListLocal = document.querySelectorAll('.page-wrapper');
-            if (currentPageIndex < wrappersListLocal.length - 1) {
-                currentPageIndex++;
-                wrappersListLocal[currentPageIndex].scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        window.addEventListener('resize', adjustMobileScale);
-        window.addEventListener('scroll', updateActivePageIndicator);
-        document.addEventListener('DOMContentLoaded', () => {
-            adjustMobileScale();
-            setTimeout(adjustMobileScale, 100);
-            setTimeout(adjustMobileScale, 500); // multiple passes to ensure absolute layout stability
-        });
     </script>
 </body>
+
 </html>
