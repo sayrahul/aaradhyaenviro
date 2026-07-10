@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaradhya Enviro - Company Brochure</title>
+    <link data-precedence="next" href="assets/css/main.css" rel="stylesheet" />
+    <link href="favicon.ico" rel="icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* A4 Page Styling for Screen */
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+            padding: 20mm;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .cover-page {
+            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+            color: white;
+            justify-content: center;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            opacity: 0.5;
+            z-index: 1;
+        }
+        
+        .cover-content {
+            z-index: 10;
+            position: relative;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 150px;
+            font-weight: 800;
+            color: rgba(243, 244, 246, 0.5); /* gray-100 with opacity */
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .page-content {
+            z-index: 10;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .page-footer {
+            margin-top: auto;
+            border-top: 2px solid #10b981;
+            padding-top: 10px;
+            font-size: 10px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        /* Accent Elements */
+        .accent-bar {
+            width: 50px;
+            height: 4px;
+            background-color: #10b981; /* emerald-500 */
+            margin: 15px 0;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #0f766e; }
+        h2 { font-size: 1.75rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 1rem; color: #115e59; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f766e; }
+        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; color: #4b5563; text-align: justify; }
+        ul { list-style-type: none; padding-left: 0; margin-bottom: 1rem; }
+        ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; font-size: 0.95rem; color: #4b5563; }
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Print Specific CSS */
+        @media print {
+            body { background-color: white; margin: 0; padding: 0; }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100vh;
+                page-break-after: always;
+                padding: 15mm;
+            }
+            .no-print { display: none !important; }
+        }
+
+        /* Floating action buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container no-print">
+        <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full shadow-xl transition-transform transform hover:scale-105 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            Download PDF
+        </button>
+        <a href="contact.html" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-full shadow-xl transition-transform transform hover:scale-105 flex items-center gap-2 text-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Site
+        </a>
+    </div>
+
+    <!-- PAGE 1: COVER -->
+    <div class="a4-page cover-page">
+        <div class="cover-content text-center">
+            <div class="bg-white p-4 rounded-xl inline-block mb-12 shadow-2xl">
+                <img src="assets/aaradhya-logo-img.png" alt="Aaradhya Enviro Logo" class="h-24">
+            </div>
+            
+            <h1 class="text-white text-5xl font-black mb-6 tracking-tight drop-shadow-lg" style="color:white;">AARADHYA ENVIRO</h1>
+            <h2 class="text-emerald-300 text-2xl font-semibold mb-12 max-w-2xl mx-auto drop-shadow" style="color:#6ee7b7;">Comprehensive Environmental Consultancy & Turnkey Solutions</h2>
+            
+            <div class="w-24 h-1 bg-yellow-400 mx-auto mb-12 rounded-full"></div>
+
+            <p class="text-xl text-white font-light italic mb-16">"Your Trusted Partner for a Cleaner, Safer, and Compliant Future"</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm bg-black/20 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                <div class="flex flex-col items-center">
+                    <svg class="w-8 h-8 text-yellow-400 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    <span class="font-bold">ISO Certified</span>
+                    <span class="text-emerald-100">9001 | 14001 | 45001</span>
+                </div>
+                <div class="flex flex-col items-center border-l border-r border-white/20">
+                    <svg class="w-8 h-8 text-yellow-400 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/></svg>
+                    <span class="font-bold">15+ Years Experience</span>
+                    <span class="text-emerald-100">500+ Projects</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <svg class="w-8 h-8 text-yellow-400 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></svg>
+                    <span class="font-bold">Serving PAN India</span>
+                    <span class="text-emerald-100">From Sambhajinagar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: TABLE OF CONTENTS & ABOUT -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content">
+            <div class="grid grid-cols-2 gap-12 h-full">
+                <!-- Left Column: TOC -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <h2 class="mt-0 pt-0 text-2xl border-b-2 border-emerald-500 pb-2 inline-block">Table of Contents</h2>
+                    <ul class="space-y-4 mt-6">
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">1.</span> About Aaradhya Enviro</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">2.</span> Our Mission, Vision & Core Values</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">3.</span> Why Industries Choose Us</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">4.</span> Our Certifications</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">5.</span> Compliance & Consultancy Services</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">6.</span> Turnkey Projects</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">7.</span> Testing & Monitoring Services</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">8.</span> Management & Training Services</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">9.</span> Our Products & Clients</li>
+                        <li class="font-semibold text-gray-800 text-base" style="font-size: 1rem;"><span class="text-emerald-600 mr-2">10.</span> Get in Touch</li>
+                    </ul>
+
+                    <div class="mt-12 bg-teal-800 text-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-white mt-0 text-lg border-b border-teal-600 pb-2">Emergency Contact</h3>
+                        <p class="text-teal-100 text-sm mt-3">Available 24 Hours, 7 Days a Week for emergency environmental support.</p>
+                        <p class="text-2xl font-bold mt-2 text-yellow-400">99759 29212</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: About -->
+                <div>
+                    <h1 class="text-4xl text-teal-800">1. About Us</h1>
+                    <div class="accent-bar"></div>
+                    <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-teal-600 first-letter:mr-1 first-letter:float-left">
+                        Environmental pollution is one of the most pressing challenges facing industries today — threatening the quality of the air we breathe, the water we drink, and the food we grow. As regulations tighten and public awareness grows, industries across Maharashtra and India face increasing pressure to operate responsibly while still remaining profitable and efficient.
+                    </p>
+                    <p>
+                        <strong>Aaradhya Enviro</strong> was founded to solve exactly this problem. We are a premier environmental consultancy organization based in Chhatrapati Sambhajinagar (Aurangabad), Maharashtra, dedicated to helping industries strike the right balance between operational efficiency and environmental responsibility.
+                    </p>
+                    <p>
+                        Over the last 15+ years, we have grown from a local compliance consultancy into a full-spectrum environmental solutions provider, now serving clients PAN India with multiple areas of operation across Maharashtra. Our team has successfully delivered 500+ projects for clients ranging from small manufacturing units to large industrial groups, sugar factories, construction companies, and multinational corporations.
+                    </p>
+                    <p class="p-4 bg-teal-50 border-l-4 border-teal-500 rounded-r-lg font-medium text-teal-900 shadow-sm my-4">
+                        What sets us apart is that we don't just help you get paperwork approved — we design, install, operate, and maintain the actual physical systems (ETPs, STPs, RO plants, air pollution control equipment) that keep your facility compliant every single day.
+                    </p>
+                    <p>
+                        This means you get one single, accountable partner for everything related to environment, health, and safety (EHS) — instead of juggling multiple vendors, consultants, and contractors. Whether you are a new industry seeking your first MPCB consent or a large corporation looking to upgrade, we are your single point of contact.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>AARADHYA ENVIRO BROCHURE</span>
+            <span>PAGE 1</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: MISSION, VISION & WHY CHOOSE US -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content">
+            <h1 class="text-3xl text-teal-800">2. Mission, Vision & Values</h1>
+            <div class="accent-bar"></div>
+            
+            <div class="grid grid-cols-2 gap-8 mb-10">
+                <div class="bg-gradient-to-br from-teal-700 to-teal-900 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
+                    <svg class="absolute -bottom-4 -right-4 w-32 h-32 text-white/10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    <h3 class="text-yellow-400 mt-0 text-xl">Our Mission</h3>
+                    <p class="text-teal-50 relative z-10">To make environmental compliance simple, transparent, and achievable for every industry we work with — protecting the environment while helping our clients reduce risk and operational costs.</p>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
+                    <svg class="absolute -bottom-4 -right-4 w-32 h-32 text-white/10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/></svg>
+                    <h3 class="text-yellow-400 mt-0 text-xl">Our Vision</h3>
+                    <p class="text-emerald-50 relative z-10">To be India's most trusted name in environmental consultancy and turnkey pollution control solutions, recognized for reliability, technical expertise, and genuine care for the environment.</p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl mt-4">Core Values</h2>
+            <div class="grid grid-cols-2 gap-6 mb-12">
+                <div class="border-l-4 border-emerald-500 pl-4">
+                    <h3 class="mt-0 text-lg text-teal-800">Environment & Safety First</h3>
+                    <p class="text-sm">Protecting the environment is our top priority. Every solution we design meets the highest EHS standards — not just the minimum legal requirement.</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-4">
+                    <h3 class="mt-0 text-lg text-teal-800">Client-Centric Support</h3>
+                    <p class="text-sm">We provide timely, best-in-class service across every stage — from the first site visit to years of ongoing operation and maintenance.</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-4">
+                    <h3 class="mt-0 text-lg text-teal-800">Quality Assured</h3>
+                    <p class="text-sm">As an ISO 9001, 14001, and 45001 certified organization, we hold ourselves to internationally recognized standards in everything we do.</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-4">
+                    <h3 class="mt-0 text-lg text-teal-800">Trust & Reliability</h3>
+                    <p class="text-sm">With a proven track record of successful installations, our clients know they can depend on us even for urgent, time-sensitive compliance needs.</p>
+                </div>
+            </div>
+
+            <h1 class="text-3xl text-teal-800 border-t border-gray-200 pt-8">3. Why Choose Aaradhya Enviro</h1>
+            <div class="accent-bar"></div>
+            
+            <div class="grid grid-cols-2 gap-x-12 gap-y-6 mt-6">
+                <div>
+                    <h3 class="mt-0 text-teal-700">Local & National Expertise</h3>
+                    <p class="text-sm">Headquartered in Chhatrapati Sambhajinagar with a PAN India presence, combining deep, on-ground knowledge of MPCB regulations with the scale to serve clients nationwide.</p>
+                </div>
+                <div>
+                    <h3 class="mt-0 text-teal-700">Certified Professionals</h3>
+                    <p class="text-sm">Our team is trained across environmental engineering, regulatory compliance, and industrial safety — backed by our triple ISO certification.</p>
+                </div>
+                <div>
+                    <h3 class="mt-0 text-teal-700">Comprehensive Solutions</h3>
+                    <p class="text-sm">From legal compliances to complete turnkey installation of ETP, STP, and RO systems, we manage the entire journey under one roof.</p>
+                </div>
+                <div>
+                    <h3 class="mt-0 text-teal-700">One Partner, Every Stage</h3>
+                    <p class="text-sm font-semibold text-teal-600 mb-1">Design → Approval → Installation → Testing → Operation → Maintenance → Renewal.</p>
+                    <p class="text-sm">We stay with you through the entire lifecycle.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="page-footer">
+            <span>AARADHYA ENVIRO BROCHURE</span>
+            <span>PAGE 2</span>
+        </div>
+    </div>
+
+    <!-- PAGE 4: SERVICES 1 -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content">
+            
+            <div class="flex items-center justify-between mb-6 border-b-2 border-emerald-500 pb-4">
+                <h1 class="text-3xl text-teal-800 mb-0">4. Compliance & Consultancy</h1>
+                <div class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full font-bold text-sm tracking-widest">SERVICES</div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                    <h2 class="mt-0 text-2xl text-teal-700 flex items-center gap-3">
+                        <span class="bg-teal-700 text-white w-10 h-10 flex items-center justify-center rounded-lg text-lg">1</span>
+                        Legal Compliances (MPCB)
+                    </h2>
+                    <div class="grid grid-cols-3 gap-6 mt-4">
+                        <div class="col-span-2">
+                            <p class="text-sm mb-2"><strong class="text-gray-800">What It Is:</strong> Mandated consents and authorizations (CTE, CTO) from the Maharashtra Pollution Control Board.</p>
+                            <p class="text-sm mb-2"><strong class="text-gray-800">Why It Matters:</strong> Operating without valid consent can result in production shutdown notices, heavy penalties, and legal action.</p>
+                            <p class="text-sm mb-0"><strong class="text-gray-800">What We Do:</strong></p>
+                            <ul class="text-sm mt-1 grid grid-cols-2 gap-x-2">
+                                <li>Assess industry category</li>
+                                <li>Prepare CTE & CTO applications</li>
+                                <li>Liaise with MPCB officers</li>
+                                <li>Handle renewals proactively</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h3 class="mt-0 text-sm font-bold text-gray-800 mb-2">Who Needs This?</h3>
+                            <p class="text-xs text-gray-600">Any manufacturing unit, processing plant, hospital, hotel, or commercial establishment generating emissions, effluent, or waste.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                    <h2 class="mt-0 text-2xl text-teal-700 flex items-center gap-3">
+                        <span class="bg-teal-700 text-white w-10 h-10 flex items-center justify-center rounded-lg text-lg">2</span>
+                        Environmental Clearances (EC)
+                    </h2>
+                    <div class="grid grid-cols-3 gap-6 mt-4">
+                        <div class="col-span-2">
+                            <p class="text-sm mb-2"><strong class="text-gray-800">What It Is:</strong> Clearance from SEIAA or MoEFCC required for specific industrial projects before construction.</p>
+                            <p class="text-sm mb-2"><strong class="text-gray-800">Why It Matters:</strong> Beginning construction without it can lead to shutdowns and significant financial loss.</p>
+                            <p class="text-sm mb-0"><strong class="text-gray-800">What We Do:</strong></p>
+                            <ul class="text-sm mt-1 grid grid-cols-2 gap-x-2">
+                                <li>Determine Category (A or B)</li>
+                                <li>Prepare EIA reports</li>
+                                <li>Coordinate public hearings</li>
+                                <li>Track application process</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h3 class="mt-0 text-sm font-bold text-gray-800 mb-2">Who Needs This?</h3>
+                            <p class="text-xs text-gray-600">New industrial projects, expansions, mining operations, and infrastructure projects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 & 4 Grid -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                        <h2 class="mt-0 text-xl text-teal-700">3. Audit & Reporting</h2>
+                        <p class="text-sm mb-2"><strong class="text-gray-800">What It Is:</strong> Periodic environmental reporting (Form IV, Form V).</p>
+                        <ul class="text-xs mt-2 space-y-1">
+                            <li>Submit Form IV and Form V</li>
+                            <li>Conduct internal environmental audits</li>
+                            <li>Prepare feasibility reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                        <h2 class="mt-0 text-xl text-teal-700">4. CGWA & Bio-Medical</h2>
+                        <p class="text-sm mb-2"><strong class="text-gray-800">What It Is:</strong> NOCs for groundwater extraction and bio-medical waste.</p>
+                        <ul class="text-xs mt-2 space-y-1">
+                            <li>Prepare CGWA NOC applications</li>
+                            <li>Obtain Bio-Medical Waste Auth.</li>
+                            <li>Design bio-medical waste systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>AARADHYA ENVIRO BROCHURE</span>
+            <span>PAGE 3</span>
+        </div>
+    </div>
+
+    <!-- PAGE 5: TURNKEY -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content">
+            
+            <div class="flex items-center justify-between mb-6 border-b-2 border-blue-500 pb-4">
+                <h1 class="text-3xl text-blue-900 mb-0">5. Turnkey Projects</h1>
+                <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold text-sm tracking-widest">ENGINEERING</div>
+            </div>
+
+            <p class="text-lg text-blue-900 font-medium mb-6">We handle design, fabrication, installation, and commissioning under one roof, avoiding the common problems of multi-vendor coordination.</p>
+
+            <div class="grid grid-cols-2 gap-8">
+                
+                <!-- Box 1 -->
+                <div class="border-t-4 border-blue-600 bg-gray-50 p-6 rounded-b-xl shadow-md">
+                    <h2 class="mt-0 text-xl text-blue-800">ETP & STP Installation</h2>
+                    <p class="text-sm text-gray-700 mb-4">Treat industrial wastewater (ETP) and domestic sewage (STP) before discharge, ensuring strict MPCB standards are met.</p>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-sm text-blue-700 mt-0 uppercase tracking-wide">Our Delivery Process</h3>
+                        <ul class="text-xs space-y-2 mb-0">
+                            <li><strong>Design:</strong> Engineered for your specific flow</li>
+                            <li><strong>Fabrication:</strong> Strict quality standards</li>
+                            <li><strong>Erection:</strong> On-site construction</li>
+                            <li><strong>Commissioning:</strong> Testing and calibration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="border-t-4 border-teal-600 bg-gray-50 p-6 rounded-b-xl shadow-md">
+                    <h2 class="mt-0 text-xl text-teal-800">ZLD & RO Systems</h2>
+                    <p class="text-sm text-gray-700 mb-4">Zero Liquid Discharge (ZLD) and Reverse Osmosis (RO) systems to recycle all effluent, leaving no liquid waste.</p>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 h-full">
+                        <ul class="text-xs space-y-3 mb-0">
+                            <li>Complete ZLD system design & installation</li>
+                            <li>Industrial and commercial RO plants</li>
+                            <li>Integration with existing ETP/STP infrastructure</li>
+                            <li>Evaporation and crystallization systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="border-t-4 border-emerald-600 bg-gray-50 p-6 rounded-b-xl shadow-md">
+                    <h2 class="mt-0 text-xl text-emerald-800">Air Pollution Control</h2>
+                    <p class="text-sm text-gray-700 mb-4">Capture and treat emissions (dust, gases, odour) before release to meet air quality standards.</p>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <ul class="text-xs space-y-3 mb-0">
+                            <li>Scrubbers and Bag Filters</li>
+                            <li>Cyclone Separators</li>
+                            <li>Electrostatic Precipitators</li>
+                            <li>Odour control systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Box 4 -->
+                <div class="border-t-4 border-indigo-600 bg-gray-50 p-6 rounded-b-xl shadow-md">
+                    <h2 class="mt-0 text-xl text-indigo-800">Plant Up-gradation</h2>
+                    <p class="text-sm text-gray-700 mb-4">Assess, redesign, and upgrade existing environmental infrastructure to meet current regulations and capacities.</p>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <ul class="text-xs space-y-3 mb-0">
+                            <li>Technical audit of existing systems</li>
+                            <li>Identify capacity shortfalls</li>
+                            <li>Implement additional treatment stages</li>
+                            <li>Minimize production downtime</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="page-footer">
+            <span>AARADHYA ENVIRO BROCHURE</span>
+            <span>PAGE 4</span>
+        </div>
+    </div>
+
+    <!-- PAGE 6: TESTING & MANAGEMENT -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content">
+            
+            <div class="flex items-center justify-between mb-6 border-b-2 border-emerald-500 pb-4">
+                <h1 class="text-3xl text-teal-800 mb-0">6. Testing & Management</h1>
+                <div class="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full font-bold text-sm tracking-widest">MONITORING</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-x-8 gap-y-10">
+                
+                <!-- Section 1 -->
+                <div>
+                    <h2 class="mt-0 text-xl text-teal-700 border-l-4 border-teal-500 pl-3">Air, Water & Soil Testing</h2>
+                    <p class="text-sm text-gray-700">Regular laboratory testing provides documented proof of compliance and catches issues early.</p>
+                    <ul class="text-sm mt-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <li>Stack emission testing</li>
+                        <li>Effluent/water quality testing</li>
+                        <li>Soil contamination assessment</li>
+                        <li>Fully documented regulatory reports</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2 -->
+                <div>
+                    <h2 class="mt-0 text-xl text-teal-700 border-l-4 border-teal-500 pl-3">Online Monitoring Systems</h2>
+                    <p class="text-sm text-gray-700">Automated digital systems (CEMS/CEQMS) that continuously track emissions and transmit data to regulators.</p>
+                    <ul class="text-sm mt-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <li>Supply, install, and calibrate CEMS</li>
+                        <li>Digital display boards</li>
+                        <li>Integration with MPCB/CPCB servers</li>
+                        <li>Ongoing calibration and maintenance</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div>
+                    <h2 class="mt-0 text-xl text-teal-700 border-l-4 border-teal-500 pl-3">Treatability & Noise</h2>
+                    <p class="text-sm text-gray-700">Analyze specific wastewater characteristics (Treatability) and monitor industrial noise levels.</p>
+                    <ul class="text-sm mt-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <li>Laboratory and pilot-scale trials</li>
+                        <li>Process efficiency identification</li>
+                        <li>On-site noise level measurements</li>
+                        <li>Acoustic control recommendations</li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div>
+                    <h2 class="mt-0 text-xl text-teal-700 border-l-4 border-teal-500 pl-3">Hazardous & Plastic EPR</h2>
+                    <p class="text-sm text-gray-700">Specialized handling for hazardous waste and Extended Producer Responsibility (EPR) for plastics.</p>
+                    <ul class="text-sm mt-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <li>Sludge analysis and storage design</li>
+                        <li>Disposal through authorized recyclers</li>
+                        <li>EPR registration on CPCB portal</li>
+                        <li>Annual EPR returns filing</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- O&M and Training -->
+            <div class="mt-10 bg-teal-800 text-white p-8 rounded-2xl shadow-lg">
+                <h2 class="mt-0 text-2xl text-yellow-400 mb-6">Operations, Maintenance & Training</h2>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-white mt-0 border-b border-teal-600 pb-2">O&M Services</h3>
+                        <p class="text-sm text-teal-50 mt-3">Trained operators for daily running of ETP/STP, scheduled preventive maintenance, real-time performance adjustments, and Annual Maintenance Contracts (AMC).</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white mt-0 border-b border-teal-600 pb-2">Compliance Training</h3>
+                        <p class="text-sm text-teal-50 mt-3">Equip internal teams with knowledge of MPCB regulations, correct equipment operation, and audit-readiness through customized training programs.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="page-footer">
+            <span>AARADHYA ENVIRO BROCHURE</span>
+            <span>PAGE 5</span>
+        </div>
+    </div>
+
+    <!-- PAGE 7: PRODUCTS & CONTACT -->
+    <div class="a4-page">
+        <div class="watermark">AARADHYA</div>
+        <div class="page-content flex flex-col">
+            
+            <div class="grid grid-cols-2 gap-8 mb-12">
+                <div>
+                    <h1 class="text-3xl text-teal-800 mt-0 mb-4">Our Products</h1>
+                    <div class="accent-bar mb-6"></div>
+                    <ul class="space-y-4">
+                        <li class="bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>ETP Systems</strong><br><span class="text-sm">Complete industrial wastewater treatment units</span></li>
+                        <li class="bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>STP Systems</strong><br><span class="text-sm">Domestic and commercial sewage treatment</span></li>
+                        <li class="bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>ZLD Systems</strong><br><span class="text-sm">Advanced systems for complete water recycling</span></li>
+                        <li class="bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>RO Plants</strong><br><span class="text-sm">Industrial water purification and desalination</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h1 class="text-3xl text-teal-800 mt-0 mb-4">Our Certifications</h1>
+                    <div class="accent-bar mb-6"></div>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-yellow-400">
+                                <span class="font-bold text-yellow-700 text-sm">9001</span>
+                            </div>
+                            <div>
+                                <h3 class="mt-0 text-base text-gray-800">ISO 9001:2015</h3>
+                                <p class="text-xs mt-1">Quality Management System</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-emerald-500">
+                                <span class="font-bold text-emerald-700 text-sm">14001</span>
+                            </div>
+                            <div>
+                                <h3 class="mt-0 text-base text-gray-800">ISO 14001:2015</h3>
+                                <p class="text-xs mt-1">Environmental Management System</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-blue-500">
+                                <span class="font-bold text-blue-700 text-sm">45001</span>
+                            </div>
+                            <div>
+                                <h3 class="mt-0 text-base text-gray-800">ISO 45001:2018</h3>
+                                <p class="text-xs mt-1">Occupational Health & Safety</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients & Service Areas -->
+            <div class="bg-gray-900 text-white p-8 rounded-2xl mb-12 shadow-xl flex-grow flex flex-col justify-center">
+                <h2 class="text-2xl text-yellow-400 mt-0 text-center mb-8">Trusted by 500+ Clients PAN India</h2>
+                <div class="grid grid-cols-3 gap-4 text-center mb-8">
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">Bai-Kakaji Group</div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">S J Contracts Pvt. Ltd.</div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">Renuka Sugar Renapur</div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">Atul</div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">Rohan Builders</div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-sm font-medium">Shimizu Corporation</div>
+                </div>
+                <div class="text-center border-t border-gray-700 pt-6">
+                    <p class="text-gray-300 text-sm uppercase tracking-widest font-semibold mb-2">Areas We Serve</p>
+                    <p class="text-emerald-400 text-sm leading-relaxed">
+                        Chhatrapati Sambhajinagar • Pune • Mumbai • Nashik • Nagpur<br>
+                        Ahmednagar • Jalna • Beed • Latur • Osmanabad • Nanded
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Box -->
+            <div class="bg-teal-50 border-2 border-teal-600 p-6 rounded-2xl flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl text-teal-800 mt-0 mb-2">Ready to Ensure Compliance?</h2>
+                    <p class="text-sm text-teal-700 mb-0">Contact our environmental experts today for a free site assessment.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-3xl font-black text-teal-800 mb-1">99759 29212</p>
+                    <p class="text-sm font-medium text-teal-600 mb-0">info@aaradhyaenviro.com</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="page-footer border-t-2 border-teal-600">
+            <span class="text-teal-800 font-bold">10, Wadgaon Kolhati, MIDC Waluj Area, Chhatrapati Sambhajinagar - 431136</span>
+            <span>PAGE 6</span>
+        </div>
+    </div>
+
+</body>
+</html>
