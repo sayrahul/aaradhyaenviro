@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.aaradhyaenviro.com/sitemap.xml
+
+Sitemap: https://www.aaradhyaenviro.com/image-sitemap.xml
