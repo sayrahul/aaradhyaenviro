@@ -1244,6 +1244,18 @@ body {
   min-height: 100vh;
 }
 
+.min-h-\[180px\] {
+  min-height: 180px;
+}
+
+.min-h-\[200px\] {
+  min-height: 200px;
+}
+
+.min-h-\[48px\] {
+  min-height: 48px;
+}
+
 .w-1 {
   width: 0.25rem;
 }
@@ -1419,6 +1431,10 @@ body {
 
 .flex-shrink-0 {
   flex-shrink: 0;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
 }
 
 .flex-grow {
