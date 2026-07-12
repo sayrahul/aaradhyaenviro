@@ -42,13 +42,14 @@ h1, h2, h3, h4, .font-heading { font-family: 'Outfit', sans-serif; }
 /* ── A4 PAGES (Desktop / Print) ── */
 .a4-page {
   width: 210mm; min-height: 297mm; height: 297mm; padding: 20mm;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   background: #ffffff;
   box-shadow: 0 20px 60px -15px rgba(13,148,136,.12), 0 4px 16px rgba(0,0,0,.06);
   position: relative; box-sizing: border-box;
   page-break-after: always; overflow: hidden;
   display: flex; flex-direction: column; justify-content: space-between;
   border-radius: 4px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .pdf-page-bg {
   background-image:
@@ -93,6 +94,17 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 .geometric-dots-bg { background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L30 15L15 30L0 15Z' fill='%23ffffff' fill-opacity='1'/%3E%3C/svg%3E"); }
 .radial-dots-bg { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 16px 16px; }
 .pdf-page-bg { background-color: #ffffff; background-image: radial-gradient(circle at 100% 0%,#f0fdf4 0%,#ffffff 70%), radial-gradient(circle at 0% 100%,#f0fdf9 0%,#ffffff 70%); }
+
+/* ── DESKTOP BOOK MODE CONTROLS ── */
+.desktop-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
+  padding: 0.8rem 1.75rem; border-radius: 9999px;
+  box-shadow: 0 10px 30px -10px rgba(13,148,136,0.15), 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid rgba(13, 148, 136, 0.15);
+  max-width: 450px; margin: 1.5rem auto 0;
+  position: sticky; top: 1rem; z-index: 1000;
+}
 
 /* ── DESKTOP FAB ── */
 .fab-container {
@@ -139,7 +151,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 .mob-hero h1 span { color:#34d399; }
 .mob-hero p { color:rgba(255,255,255,.75); font-size:.875rem; margin:0 0 1.25rem; line-height:1.5; position:relative; z-index:2; }
 .mob-hero-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; position:relative; z-index:2; }
-.mob-hero-stat { background:rgba(255,255,255,.1); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:.75rem; text-align:center; }
+.mob-hero-stat { background:rgba(255,255,255,.15); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:.75rem; text-align:center; }
 .mob-hero-stat .val { font-family:'Outfit',sans-serif; font-size:1.4rem; font-weight:900; color:#fbbf24; display:block; }
 .mob-hero-stat .lbl { font-size:.62rem; color:rgba(255,255,255,.7); font-weight:600; text-transform:uppercase; letter-spacing:.05em; }
 
@@ -159,7 +171,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 .mob-sec-body { padding:1.25rem; }
 
 /* ── MOBILE CARDS ── */
-.m-card { background:var(--slate-off); border:1px solid var(--border); border-left:4px solid var(--teal); border-radius:12px; padding:1rem; margin-bottom:.75rem; }
+.m-card { background:var(--slate-off); border:1px solid var(--border); border-left:4px solid var(--teal); border-radius:12px; padding:1rem; margin-bottom:.75rem; transition: all 0.3s; }
 .m-card h3 { font-family:'Outfit',sans-serif; font-size:.9rem; font-weight:700; color:var(--teal-deep); margin:0 0 .4rem; }
 .m-card p { font-size:.825rem; color:var(--text-body); margin:0; line-height:1.65; }
 .m-num { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:7px; background:var(--teal); color:white; font-size:.65rem; font-weight:700; flex-shrink:0; margin-right:.5rem; }
@@ -185,7 +197,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 /* Industry grid */
 .m-ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.45rem; margin:.65rem 0; }
 .m-ind { background:#f0fdf4; border:1px solid #a7f3d0; border-radius:10px; padding:.7rem .35rem; text-align:center; }
-.m-ind .ic { font-size:1.25rem; margin-bottom:.2rem; display:block; }
+.m-ind svg { margin-bottom: .25rem; }
 .m-ind .lb { font-size:.62rem; font-weight:700; color:#065f46; }
 
 /* Client chips */
@@ -218,6 +230,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
   body { background: #f0fdf4; padding-top: 50px; }
   .fab-container { display: none !important; }
   #pdf-content-wrapper { display: none !important; }
+  .desktop-controls { display: none !important; }
   .mob-header { display: flex !important; }
   .mob-hero { display: block !important; }
   .mob-progress { display: block !important; }
@@ -251,6 +264,11 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
   </div>
 </header>
 
+<!-- Mobile Scroll Progress Bar -->
+<div id="mob-scroll-progress" style="display:none;" class="fixed top-[48px] left-0 right-0 h-1 bg-teal-900/20 z-[9999] no-print">
+  <div id="mob-scroll-indicator" class="h-full bg-gradient-to-r from-teal-400 to-amber-400 w-0 transition-all duration-100"></div>
+</div>
+
 <!-- ═══ MOBILE HERO ═══ -->
 <section class="mob-hero">
   <h1>Aaradhya <span>Enviro</span></h1>
@@ -281,12 +299,30 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
     </div>
     <h3 style="font-family:'Outfit',sans-serif;font-size:.9rem;color:#134e4a;font-weight:700;margin:0 0 .55rem;">Industries We Serve</h3>
     <div class="m-ind-grid">
-      <div class="m-ind"><span class="ic">&#127981;</span><span class="lb">Chemical &amp; Pharma</span></div>
-      <div class="m-ind"><span class="ic">&#127852;</span><span class="lb">Sugar &amp; Food</span></div>
-      <div class="m-ind"><span class="ic">&#127959;</span><span class="lb">Construction</span></div>
-      <div class="m-ind"><span class="ic">&#127973;</span><span class="lb">Hospitals</span></div>
-      <div class="m-ind"><span class="ic">&#9881;</span><span class="lb">Manufacturing</span></div>
-      <div class="m-ind"><span class="ic">&#127807;</span><span class="lb">Agro &amp; Textiles</span></div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-.31-2.285L14 8V4h1a1 1 0 100-2h-4a1 1 0 100 2h1v4L6.88 13.143a2 2 0 00-.31 2.286A2 2 0 008.25 19h7.5a2 2 0 001.678-1.572z"/></svg>
+        <span class="lb">Chemical &amp; Pharma</span>
+      </div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <span class="lb">Sugar &amp; Food</span>
+      </div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"/></svg>
+        <span class="lb">Construction</span>
+      </div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 10.5h-5.5V5a1.5 1.5 0 00-3 0v5.5H5a1.5 1.5 0 000 3h5.5V19a1.5 1.5 0 003 0v-5.5H19a1.5 1.5 0 000-3z"/></svg>
+        <span class="lb">Hospitals</span>
+      </div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="lb">Manufacturing</span>
+      </div>
+      <div class="m-ind">
+        <svg class="w-6 h-6 mx-auto text-teal-600 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0a5 5 0 015 5c0 2-2 3-5 4m0-9a5 5 0 00-5 5c0 2 2 3 5 4"/></svg>
+        <span class="lb">Agro &amp; Textiles</span>
+      </div>
     </div>
   </div>
 </section>
@@ -322,11 +358,61 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 <section class="mob-section" id="ms3">
   <div class="mob-sec-hdr"><span class="mob-sec-badge">03</span><h2 class="mob-sec-title">Legal &amp; Regulatory Compliance</h2></div>
   <div class="mob-sec-body">
-    <p style="font-size:.825rem;color:#475569;margin-bottom:.85rem;line-height:1.7;">Complete end-to-end regulatory compliance services for industries across Maharashtra and India.</p>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">01</span><h3>MPCB Consents (CTE / CTO)</h3></div><p><strong style="color:#1e293b;">Scope:</strong> CTE and CTO filings. We assess category, prepare documentation, file on portal, and liaise with MPCB.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">02</span><h3>Environmental Clearances (EC)</h3></div><p><strong style="color:#1e293b;">Scope:</strong> SEIAA and MoEFCC approvals. Baseline monitoring, EIA reports, public hearing coordination.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">03</span><h3>Audit &amp; Regulatory Reporting</h3></div><p>Form IV (Hazardous Waste), Form V (Environmental Statement), compliance audits and mandatory annual returns.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">04</span><h3>CGWA &amp; Bio-Medical NOCs</h3></div><p>Ground water extraction permissions, Bio-Medical waste authorization, MPCB/CPCB portal representation.</p></div>
+    <p style="font-size:.825rem;color:#475569;margin-bottom:.85rem;line-height:1.7;">Complete end-to-end regulatory compliance services for industries. Tapping a card below expands details.</p>
+    
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">01</span>
+          <h3>MPCB Consents (CTE / CTO)</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-1"><strong style="color:#1e293b;">Scope:</strong> CTE and CTO filings. We assess category, prepare documentation, file on portal, and liaise with MPCB.</p>
+        <p class="text-[11px] text-slate-500 bg-slate-100 p-2.5 rounded-lg border border-slate-200/50 mt-2"><strong>Who Needs It:</strong> Any facility producing effluent, air emissions, or hazardous waste in Maharashtra.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">02</span>
+          <h3>Environmental Clearances (EC)</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-1"><strong style="color:#1e293b;">Scope:</strong> SEIAA and MoEFCC approvals. Baseline monitoring, EIA reports, public hearing coordination.</p>
+        <p class="text-[11px] text-slate-500 bg-slate-100 p-2.5 rounded-lg border border-slate-200/50 mt-2"><strong>Who Needs It:</strong> New setups or expansions of mining, infrastructure, and large industrial facilities.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">03</span>
+          <h3>Audit &amp; Reporting</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Timely mandatory filings: Form IV (Hazardous Waste), Form V (Environmental Statement), compliance audits and mandatory annual returns to prevent penalties.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">04</span>
+          <h3>CGWA &amp; Bio-Medical NOCs</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Groundwater extraction NOCs, Bio-Medical waste authorization, CPCB/MPCB portal representation for clinics and specialized chemical operations.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -348,10 +434,58 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
       <div class="m-tl-item" data-n="6"><strong>O&amp;M &amp; Training</strong><span>Ongoing operation, maintenance, and staff SOP training.</span></div>
     </div>
     <h3 style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#134e4a;font-weight:700;margin:.85rem 0 .5rem;">Project Types</h3>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">ETP</span><h3>ETP &amp; STP Installation</h3></div><p>Custom-designed Effluent Treatment Plants for industrial wastewater and Sewage Treatment Plants for domestic sewage.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">ZLD</span><h3>ZLD &amp; RO Systems</h3></div><p>Zero Liquid Discharge and Reverse Osmosis systems for 100% wastewater recycling. MEE &amp; MVRE thermal evaporation.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">APC</span><h3>Air Pollution Control</h3></div><p>Packed column wet scrubbers and pulse-jet baghouse filters for stack and process emissions control.</p></div>
-    <div class="m-card"><div class="m-hdr"><span class="m-num">UP</span><h3>Plant Up-gradation</h3></div><p>Retrofitting of under-performing plants — detailed capacity gap analysis with minimal operational shutdown.</p></div>
+    
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">ETP</span>
+          <h3>ETP &amp; STP Installation</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Custom-designed Effluent Treatment Plants (ETP) for chemical/industrial wastewater, and Sewage Treatment Plants (STP) for domestic sewage.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">ZLD</span>
+          <h3>ZLD &amp; RO Systems</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Zero Liquid Discharge and Reverse Osmosis systems to recycle 100% of industrial wastewater. MEE &amp; MVRE thermal evaporation systems.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">APC</span>
+          <h3>Air Pollution Control</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Tailored air pollution control devices: packed column wet scrubbers and pulse-jet baghouse filters for stack and process emissions control.</p>
+      </div>
+    </div>
+
+    <div class="m-card cursor-pointer" onclick="toggleAccordion(this)">
+      <div class="m-hdr justify-between w-full flex items-center mb-0">
+        <div class="flex items-center">
+          <span class="m-num">UP</span>
+          <h3>Plant Up-gradation</h3>
+        </div>
+        <span class="acc-arrow text-teal-600 font-bold transition-transform duration-300">&#9662;</span>
+      </div>
+      <div class="m-acc-body max-h-0 overflow-hidden transition-all duration-300">
+        <p class="pt-3 mb-0">Retrofitting of under-performing plants — detailed capacity gap analysis with minimal operational shutdown or downtime.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -401,10 +535,10 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
     <div class="m-cta">
       <h3>Ready to Ensure Compliance?</h3>
       <p>Contact our environmental experts for a free site assessment.</p>
-      <a href="tel:+919975929212" class="ph">+91 99759 29212</a>
+      <a href="tel:9975929212" class="ph">9975929212</a>
       <a href="mailto:info@aaradhyaenviro.com" class="em">info@aaradhyaenviro.com</a>
       <div class="btns">
-        <a href="tel:+919975929212" class="b-call">
+        <a href="tel:9975929212" class="b-call">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           Call Now
         </a>
@@ -416,6 +550,19 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
     </div>
   </div>
 </section>
+
+<!-- DESKTOP BOOK CONTROLS -->
+<div class="desktop-controls no-print hidden lg:flex">
+  <button onclick="changeDesktopPage(-1)" id="d-prev-btn" class="p-2 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-full transition-all disabled:opacity-30 disabled:cursor-not-allowed" disabled>
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <div class="text-sm font-extrabold text-slate-800 font-heading tracking-wide">
+    Page <span id="d-current-num" class="text-teal-600 text-base">1</span> of <span id="d-total-num">7</span>
+  </div>
+  <button onclick="changeDesktopPage(1)" id="d-next-btn" class="p-2 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-full transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
 
 <!-- DESKTOP FABs -->
 <div class="fab-container no-print font-heading">
@@ -432,6 +579,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 
 <div id="pdf-content-wrapper">
 <div id="pdf-content">
+
 
 
 
@@ -528,39 +676,39 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
                         <div>
                             <h2 class="mt-0 pt-0 text-xl font-bold text-slate-900 border-b-2 border-teal-600 pb-2 inline-block">Table of Contents</h2>
                             <ul class="toc-list mt-6 text-xs text-slate-700 font-medium">
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(1)">
                                     <span class="toc-name">1. About Aaradhya Enviro</span>
                                     <span class="font-bold text-teal-700">01</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(2)">
                                     <span class="toc-name">2. Mission, Vision & Values</span>
                                     <span class="font-bold text-teal-700">02</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(2)">
                                     <span class="toc-name">3. Why Industries Choose Us</span>
                                     <span class="font-bold text-teal-700">02</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(3)">
                                     <span class="toc-name">4. Legal & Regulatory Compliance</span>
                                     <span class="font-bold text-teal-700">03</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(4)">
                                     <span class="toc-name">5. Turnkey Projects (ETP/STP)</span>
                                     <span class="font-bold text-teal-700">04</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(5)">
                                     <span class="toc-name">6. Testing & Monitoring</span>
                                     <span class="font-bold text-teal-700">05</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(5)">
                                     <span class="toc-name">7. Operations & Maintenance</span>
                                     <span class="font-bold text-teal-700">05</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(6)">
                                     <span class="toc-name">8. Turnkey Systems & Products</span>
                                     <span class="font-bold text-teal-700">06</span>
                                 </li>
-                                <li>
+                                <li class="cursor-pointer hover:text-teal-600 transition-colors" onclick="gotoDesktopPage(6)">
                                     <span class="toc-name">9. Client Reference List</span>
                                     <span class="font-bold text-teal-700">06</span>
                                 </li>
@@ -1020,7 +1168,7 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
                         <p class="text-teal-100 text-xs mb-0">Contact our environmental experts today for a free site assessment.</p>
                     </div>
                     <div class="flex flex-col items-start md:items-end text-left md:text-right">
-                        <a href="tel:+919975929212" class="text-xl font-black text-white hover:text-emerald-400 transition-colors duration-200">+91 99759 29212</a>
+                        <a href="tel:9975929212" class="text-xl font-black text-white hover:text-emerald-400 transition-colors duration-200">9975929212</a>
                         <a href="mailto:info@aaradhyaenviro.com" class="text-xs text-emerald-400 hover:underline mt-0.5">info@aaradhyaenviro.com</a>
                     </div>
                 </div>
@@ -1034,11 +1182,66 @@ p { font-size: .925rem; line-height: 1.6; margin-bottom: .85rem; color: var(--te
 
     
 
+
 </div>
 </div> <!-- End pdf-content-wrapper -->
 
 <script>
 let isGeneratingPDF = false;
+let currentDesktopPage = 0;
+let desktopPages = [];
+
+// Initialize desktop view book layout
+function initDesktopLayout() {
+  if (window.innerWidth > 840) {
+    const wrapper = document.getElementById('pdf-content-wrapper');
+    if (wrapper) { wrapper.style.display = 'block'; }
+    desktopPages = document.querySelectorAll('.a4-page');
+    document.getElementById('d-total-num').textContent = desktopPages.length;
+    showDesktopPage(currentDesktopPage);
+  } else {
+    // Reset all display properties on mobile
+    const pages = document.querySelectorAll('.a4-page');
+    pages.forEach(p => p.style.display = '');
+  }
+}
+
+function showDesktopPage(index) {
+  if (!desktopPages.length) return;
+  desktopPages.forEach((p, i) => {
+    if (i === index) {
+      p.style.setProperty('display', 'flex', 'important');
+      p.style.opacity = '1';
+      p.style.transform = 'scale(1)';
+    } else {
+      p.style.setProperty('display', 'none', 'important');
+    }
+  });
+  
+  document.getElementById('d-current-num').textContent = index + 1;
+  document.getElementById('d-prev-btn').disabled = (index === 0);
+  document.getElementById('d-next-btn').disabled = (index === desktopPages.length - 1);
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function changeDesktopPage(dir) {
+  const target = currentDesktopPage + dir;
+  if (target >= 0 && target < desktopPages.length) {
+    currentDesktopPage = target;
+    showDesktopPage(currentDesktopPage);
+  }
+}
+
+function gotoDesktopPage(idx) {
+  if (idx >= 0 && idx < desktopPages.length) {
+    currentDesktopPage = idx;
+    showDesktopPage(currentDesktopPage);
+  }
+}
+
+window.addEventListener('resize', initDesktopLayout);
+document.addEventListener('DOMContentLoaded', initDesktopLayout);
 
 function downloadPDF() {
   if (isGeneratingPDF) return;
@@ -1073,10 +1276,11 @@ function downloadPDF() {
     wrapper.style.display = savedWrapper;
     if (btn) { btn.disabled = false; }
     isGeneratingPDF = false;
+    initDesktopLayout();
   }
 }
 
-// Mobile scroll progress pips
+// Mobile scroll progress pips and scroll progress line
 function updatePips() {
   const secs = document.querySelectorAll('.mob-section');
   const pips = document.querySelectorAll('.mob-pip');
@@ -1086,9 +1290,41 @@ function updatePips() {
     if (s.getBoundingClientRect().top <= window.innerHeight * 0.55) active = i;
   });
   pips.forEach((p, i) => p.classList.toggle('active', i === active));
+
+  // Scroll progress bar
+  if (window.innerWidth <= 840) {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    const indicator = document.getElementById("mob-scroll-indicator");
+    if (indicator) indicator.style.width = scrolled + "%";
+  }
 }
+
+// Mobile accordion toggle
+function toggleAccordion(card) {
+  const body = card.querySelector('.m-acc-body');
+  const arrow = card.querySelector('.acc-arrow');
+  if (!body) return;
+  
+  const isExpanded = body.style.maxHeight && body.style.maxHeight !== '0px';
+  
+  if (isExpanded) {
+    body.style.maxHeight = '0px';
+    arrow.style.transform = 'rotate(0deg)';
+    card.classList.remove('border-amber-500');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    arrow.style.transform = 'rotate(180deg)';
+    card.classList.add('border-amber-500');
+  }
+}
+
 window.addEventListener('scroll', updatePips, { passive: true });
-document.addEventListener('DOMContentLoaded', updatePips);
+document.addEventListener('DOMContentLoaded', () => {
+  updatePips();
+  initDesktopLayout();
+});
 </script>
 
 </body>
