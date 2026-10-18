@@ -12,6 +12,7 @@ function organization() {
     '@type': 'ProfessionalService',
     '@id': ORG_ID,
     name: site.name,
+    alternateName: site.alternateName,
     description: 'Environmental consultancy and turnkey pollution control company in Chhatrapati Sambhajinagar, Maharashtra: MPCB consents, Environmental Clearance, ETP/STP, ZLD, air pollution control, environmental testing and O&M.',
     url: site.siteUrl + '/',
     logo: abs('/assets/main-logo.png'),
@@ -45,7 +46,8 @@ function organization() {
         itemOffered: { '@type': 'Service', name: s.name, url: abs(`/services/${s.slug}`) },
       })),
     },
-    sameAs: Object.values(site.social),
+    hasMap: site.googleBusinessUrl || undefined,
+    sameAs: [...Object.values(site.social), site.googleBusinessUrl].filter(Boolean),
   };
 }
 

@@ -5,12 +5,14 @@ const site = require('../config');
 
 const targets = {
   website: `${site.siteUrl}/?utm_source=brochure&utm_medium=qr`,
+  review: site.googleReviewUrl,
   whatsapp: `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hello Aaradhya Enviro, I saw your company profile and would like to discuss a requirement.')}`,
 };
 const cache = {};
 
 async function prepare() {
   for (const [key, url] of Object.entries(targets)) {
+    if (!url) continue;
     cache[key] = await QRCode.toString(url, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#111827', light: '#ffffff' } });
   }
 }

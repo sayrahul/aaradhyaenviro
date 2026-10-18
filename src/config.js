@@ -6,6 +6,8 @@
 module.exports = {
   name: 'Aaradhya Enviro',
   legalName: 'Aaradhya Enviro',
+  // Name used on the Google Business Profile – listed as alternateName so Google links both names.
+  alternateName: 'Aaradhya Environmental Consultancy and Services',
   tagline: 'Environmental Consultancy & Services',
 
   // Canonical domain (no trailing slash). The www sub-domain currently has no DNS
@@ -28,8 +30,8 @@ module.exports = {
   },
   geo: { lat: 19.8762, lng: 75.3433 },
   // Paste the "Share → link" of your Google Business Profile here to show review / directions buttons.
-  googleBusinessUrl: '',
-  googleReviewUrl: '',
+  googleBusinessUrl: 'https://maps.google.com/?cid=10184853400867303808',
+  googleReviewUrl: 'https://g.page/r/CYDxH9g03leNEBE/review',
 
   hours: '24/7 on phone & WhatsApp',
   openingHoursSchema: 'Mo-Su 00:00-23:59',

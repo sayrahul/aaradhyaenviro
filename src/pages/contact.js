@@ -77,7 +77,10 @@ ${pageHero({ title: 'Contact us', lead: 'Tell us about your unit and requirement
         <div class="p-6">
           <h2 class="font-semibold text-gray-900">${esc(site.name)}</h2>
           <p class="mt-1 text-sm leading-relaxed text-gray-600">${esc(site.address.full)}</p>
-          <a href="${directions}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800">Open in Google Maps ${icon('external-link', 'w-4 h-4')}</a>
+          <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+            <a href="${directions}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800">Open in Google Maps ${icon('external-link', 'w-4 h-4')}</a>
+            ${site.googleReviewUrl ? `<a href="${site.googleReviewUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800">${icon('star', 'w-4 h-4 text-yellow-500')}Review us on Google</a>` : ''}
+          </div>
         </div>
       </div>
       <div class="rounded-2xl border border-gray-200 bg-white p-6">

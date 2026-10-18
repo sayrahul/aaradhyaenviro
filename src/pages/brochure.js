@@ -174,9 +174,8 @@ module.exports = () => {
         <ul class="space-y-4">
           ${[['phone', 'Call', site.phoneDisplay], ['whatsapp', 'WhatsApp', site.phoneDisplay], ['mail', 'Email', site.email], ['external-link', 'Website', domain], ['clock', 'Availability', site.hours]].map(([ic, k, v]) => `<li class="flex items-center gap-3"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-600/20 text-emerald-400">${icon(ic, 'w-5 h-5')}</span><span><span class="block text-xs uppercase tracking-wider text-gray-400">${k}</span><span class="font-semibold text-white">${esc(v)}</span></span></li>`).join('')}
         </ul>
-        <div class="grid grid-cols-2 items-start gap-4">
-          <div class="rounded-xl bg-white p-4 text-center"><div class="mx-auto w-fit">${qr('whatsapp', 'h-28 w-28')}</div><p class="mt-2 text-xs font-semibold text-gray-900">Scan to WhatsApp us</p></div>
-          <div class="rounded-xl bg-white p-4 text-center"><div class="mx-auto w-fit">${qr('website', 'h-28 w-28')}</div><p class="mt-2 text-xs font-semibold text-gray-900">Scan to visit website</p></div>
+        <div class="grid grid-cols-3 items-start gap-3">
+          ${[['whatsapp', 'WhatsApp us'], ['website', 'Visit website'], ['review', 'Review us on Google']].map(([k, label]) => `<div class="rounded-xl bg-white p-3 text-center"><div class="mx-auto w-fit">${qr(k, 'h-20 w-20')}</div><p class="mt-2 text-[0.7rem] font-semibold leading-tight text-gray-900">${label}</p></div>`).join('')}
         </div>
       </div>
       <div class="mt-10 rounded-xl border border-white/10 p-5">

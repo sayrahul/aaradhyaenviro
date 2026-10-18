@@ -2,3 +2,7 @@
 /index               /               301
 /home                /               301
 /image-sitemap.xml   /sitemap.xml    301
+
+# Short links for WhatsApp / visiting cards
+/review              https://g.page/r/CYDxH9g03leNEBE/review          302
+/map                 https://maps.google.com/?cid=10184853400867303808  302

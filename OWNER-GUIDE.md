@@ -75,14 +75,16 @@ Aapka email Google Workspace pe hai (MX = smtp.google.com), isse aapke mail spam
    - Address, phone exactly website jaisa: *10, Wadgaon Kolhati, MIDC Waluj Area, Chhatrapati Sambhajinagar 431136*, +91 99759 29212
    - Hours: sahi timing daalein (website pe abhi "24/7 on phone & WhatsApp" likha hai — galat ho to batayein)
    - Services list me website ki 17 services daalein, office aur site ki **asli photos** upload karein.
-2. Profile ka **review link** ("Ask for reviews" → copy link) aur **Maps share link** copy karein.
-3. `src/config.js` me daalein:
-   ```js
-   googleBusinessUrl: 'https://maps.app.goo.gl/....',
-   googleReviewUrl: 'https://g.page/r/..../review',
-   ```
-   `npm run build` → commit → push. Isse website pe "Review us on Google" button aur sahi directions link aa jayega.
+2. ✅ **Ho gaya:** review link (`https://g.page/r/CYDxH9g03leNEBE/review`) aur Maps link (CID 10184853400867303808)
+   `src/config.js` me lag gaye hain — website pe "Review us on Google" button, directions, schema (`hasMap`, `sameAs`)
+   aur brochure ke back cover pe review QR code.
+3. **Short link:** `aaradhyaenviro.com/review` → seedha Google review page. `aaradhyaenviro.com/map` → Google Maps.
+   Visiting card, invoice, email signature aur WhatsApp me yahi bhejein.
 4. Apne 500+ clients me se satisfied clients ko review link WhatsApp karein — real Google reviews sabse bada trust aur ranking signal hain.
+   Example message: *"Namaste, Aaradhya Enviro ke saath kaam karne ka anubhav kaisa raha? 1 minute nikal ke review de dijiye: aaradhyaenviro.com/review 🙏"*
+5. **Naam:** Google profile pe naam "Aaradhya Environmental Consultancy and Services" hai, website pe "Aaradhya Enviro".
+   Schema me dono naam jod diye hain. Agar office board / GST pe "Aaradhya Enviro" hai to profile me bhi wahi naam rakhna behtar hai
+   (Google ka niyam: profile pe wahi naam jo asal duniya me use hota hai — keywords mat jodein).
 
 ---
 

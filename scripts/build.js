@@ -132,6 +132,7 @@ function writeLlmsTxt() {
     `- [Environmental compliance FAQ](${u('/faq')})`,
     `- [Company profile PDF](${u('/assets/Aaradhya-Enviro-Company-Profile.pdf')})`,
     `- [Contact](${u('/contact')})`,
+    `- [Google Business Profile](${site.googleBusinessUrl}) (listed as "${site.alternateName}")`,
     `- [Hindi](${u('/hi')}) · [Marathi](${u('/mr')})`,
     '',
   ];
