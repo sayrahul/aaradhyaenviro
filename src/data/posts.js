@@ -38,7 +38,9 @@ const posts = list.map(p => {
   const body = fs.readFileSync(path.join(__dirname, '..', 'content', 'posts', `${p.slug}.html`), 'utf8');
   const iso = new Date(p.date + ' UTC').toISOString().slice(0, 10);
   const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
-  return { ...p, ...e, body, iso, minutes: Math.max(2, Math.round(words / 200)) };
+  // Optional "updated": "Oct 18, 2026" in posts.json shows an Updated date and sets dateModified.
+  const updatedIso = p.updated ? new Date(p.updated + " UTC").toISOString().slice(0, 10) : null;
+  return { ...p, ...e, body, iso, updatedIso, minutes: Math.max(2, Math.round(words / 200)) };
 }).sort((a, b) => b.iso.localeCompare(a.iso)); // newest first
 
 module.exports = posts;

@@ -60,6 +60,12 @@ module.exports = {
     callback: 'https://script.google.com/macros/s/AKfycbwZ1wn0rP0H-SONl9myYZWVW-7OEXoB9j4H_hr-E3mRlOGvfa2YSgfVNssgZBruDeqA/exec',
   },
 
+  // Date the service pages and FAQ were last reviewed (shown on pages and as dateModified/lastReviewed).
+  contentReviewed: '2026-10-18',
+
+  // IndexNow key (Bing, Yandex, Seznam…). The build publishes /<key>.txt; `npm run indexnow` pings new URLs.
+  indexNowKey: 'a3f9c27e5b8d4e1f9a6c0b7d2e4f8a13',
+
   // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. Empty = analytics off.
   ga4Id: '',
   // Google Search Console HTML-tag verification code (content="..." value). Empty = not added.

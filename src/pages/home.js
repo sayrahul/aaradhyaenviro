@@ -152,6 +152,7 @@ ${ctaBand()}
   return [{
     path: '/',
     file: 'index.html',
+    alternates: require('./lang').ALTERNATES,
     active: 'home',
     title: `MPCB & Environmental Consultant, Sambhajinagar | ${site.name}`,
     description: 'MPCB consent, Environmental Clearance, ETP/STP, ZLD and air pollution control from Waluj MIDC, Chhatrapati Sambhajinagar. 500+ clients. Call +91 99759 29212.',

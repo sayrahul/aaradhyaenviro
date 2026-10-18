@@ -8,7 +8,8 @@
     "images": "node scripts/images.js",
     "preview": "node scripts/serve.js",
     "dev": "node scripts/build.js && node scripts/serve.js",
-    "pdf": "node scripts/pdf.js && node scripts/build.js"
+    "pdf": "node scripts/pdf.js && node scripts/build.js",
+    "indexnow": "node scripts/indexnow.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

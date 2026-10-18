@@ -2,7 +2,8 @@ const site = require('../config');
 const posts = require('../data/posts');
 const { bySlug } = require('../data/services');
 const { esc, abs, icon, photo, photoUrl, waLink, telLink } = require('../lib/html');
-const { breadcrumbs, pageHero, ctaBand } = require('../lib/components');
+const { breadcrumbs, pageHero, ctaBand, quickAnswer } = require('../lib/components');
+const answers = require('../data/answers');
 const schema = require('../lib/schema');
 
 const fmt = iso => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -82,7 +83,7 @@ function postPage(p, i) {
       <h1 class="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">${esc(p.title)}</h1>
       <p class="mt-4 max-w-3xl text-lg text-gray-300">${esc(p.excerpt)}</p>
       <p class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-300">
-        <span class="inline-flex items-center gap-2">${icon('calendar', 'w-4 h-4 text-emerald-400')}<time datetime="${p.iso}">${fmt(p.iso)}</time></span>
+        <span class="inline-flex items-center gap-2">${icon('calendar', 'w-4 h-4 text-emerald-400')}<time datetime="${p.iso}">${fmt(p.iso)}</time>${p.updatedIso ? ` · Updated <time datetime="${p.updatedIso}">${fmt(p.updatedIso)}</time>` : ""}</span>
         <span class="inline-flex items-center gap-2">${icon('clock', 'w-4 h-4 text-emerald-400')}${p.minutes} min read</span>
         <span class="inline-flex items-center gap-2">${icon('users', 'w-4 h-4 text-emerald-400')}${esc(site.name)} technical team</span>
       </p>
@@ -92,6 +93,7 @@ function postPage(p, i) {
   <div class="bg-white">
     <div class="container-x grid gap-12 py-12 lg:grid-cols-3 lg:py-16">
       <div class="prose-article min-w-0 lg:col-span-2">
+        ${answers.posts[p.slug] ? quickAnswer(answers.posts[p.slug]) : ""}
 ${faqHtml && p.body.includes('<aside class="sources">') ? p.body.replace('<aside class="sources">', `${faqHtml}\n<aside class="sources">`) : p.body + faqHtml}
         <aside class="not-prose mt-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 sm:p-8">
           <p class="text-sm font-semibold uppercase tracking-wider text-emerald-700">Need expert help?</p>
@@ -146,7 +148,7 @@ ${faqHtml && p.body.includes('<aside class="sources">') ? p.body.replace('<aside
         description: p.excerpt,
         image: abs(photoUrl(p.image, 1600)),
         datePublished: p.iso,
-        dateModified: p.iso,
+        dateModified: p.updatedIso || p.iso,
         author: { '@type': 'Organization', name: `${site.name} technical team`, url: site.siteUrl + '/' },
         publisher: schema.orgRef,
         mainEntityOfPage: abs(`/blog/${p.slug}`),

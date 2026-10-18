@@ -23,3 +23,5 @@
 /assets/*.pdf
   Cache-Control: public, max-age=86400
   Content-Type: application/pdf
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

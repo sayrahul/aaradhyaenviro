@@ -140,4 +140,30 @@ function testimonialsSection() {
 </section>`;
 }
 
-module.exports = { breadcrumbs, pageHero, sectionHead, serviceCard, faqs, ctaBand, statsRow, clientsSection, testimonialsSection };
+// Short, self-contained answer at the top of a page (featured snippets / AI answers quote these).
+function quickAnswer(text, { meta = '' } = {}) {
+  return `<div class="quick-answer not-prose">
+      <p class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800">${icon('check-circle', 'w-4 h-4')}Quick answer</p>
+      <p class="mt-2 text-[1.05rem] leading-relaxed text-gray-800">${esc(text)}</p>
+      ${meta ? `<p class="mt-3 text-xs text-gray-500">${meta}</p>` : ''}
+    </div>`;
+}
+
+// "At a glance" fact list about the company (helps search engines and AI assistants describe it correctly).
+function facts({ dark = false } = {}) {
+  const rows = [
+    ['Company', site.name],
+    ['Founded', site.foundingYear],
+    ['Head office', site.address.full],
+    ['Clients served', site.clientsCount],
+    ['Team experience', `${site.yearsExperience} years`],
+    ['Specialised services', `${require('../data/services').services.length} (compliance, turnkey projects, testing, management)`],
+    ['Service area', 'Maharashtra; PAN India on request'],
+    ['Contact', `${site.phoneDisplay} · ${site.email}`],
+  ];
+  return `<dl class="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+      ${rows.map(([k, v]) => `<div class="border-b ${dark ? 'border-white/10' : 'border-gray-200'} pb-3"><dt class="text-xs font-semibold uppercase tracking-wider ${dark ? 'text-emerald-300' : 'text-emerald-700'}">${k}</dt><dd class="mt-1 ${dark ? 'text-white' : 'text-gray-900'}">${esc(v)}</dd></div>`).join('\n      ')}
+    </dl>`;
+}
+
+module.exports = { breadcrumbs, pageHero, sectionHead, serviceCard, faqs, ctaBand, statsRow, clientsSection, testimonialsSection, quickAnswer, facts };

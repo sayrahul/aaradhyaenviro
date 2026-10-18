@@ -52,7 +52,7 @@ async function buildAssets() {
 }
 
 function renderPages() {
-  const modules = ['home', 'about', 'services', 'products', 'gallery', 'contact', 'blog', 'brochure', 'misc'];
+  const modules = ['home', 'about', 'services', 'products', 'gallery', 'contact', 'blog', 'brochure', 'faq', 'lang', 'misc'];
   const pages = modules.flatMap(m => require(`../src/pages/${m}`)());
   return pages.map(p => ({ ...p, html: page(p) }));
 }
@@ -97,6 +97,45 @@ function writeSeoFiles(pages) {
       { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
   }, null, 2) + '\n');
+
+  // IndexNow ownership key (Bing, Yandex, Seznam…). See scripts/indexnow.js.
+  write(`${site.indexNowKey}.txt`, site.indexNowKey);
+
+  writeLlmsTxt();
+}
+
+// llms.txt – a plain Markdown summary for AI assistants (https://llmstxt.org).
+function writeLlmsTxt() {
+  const { groups, services } = require('../src/data/services');
+  const answers = require('../src/data/answers');
+  const posts = require('../src/data/posts');
+  const u = p => site.siteUrl + p;
+  const lines = [
+    `# ${site.name}`,
+    '',
+    `> ${site.name} is an environmental consultancy and turnkey pollution control company in Waluj MIDC, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra, India. Founded in ${site.foundingYear}, it has served ${site.clientsCount} clients and offers ${services.length} services: MPCB consents (CTE/CTO), Environmental Clearance, ETP/STP and ZLD plants, air pollution control, environmental testing and monitoring, hazardous waste and plastic EPR compliance, operation & maintenance and compliance training.`,
+    '',
+    '## Key facts',
+    `- Founded: ${site.foundingYear}`,
+    `- Head office: ${site.address.full}`,
+    `- Clients served: ${site.clientsCount}; team experience: ${site.yearsExperience} years`,
+    `- Service area: ${site.areasServed.join(', ')}; PAN India on request`,
+    `- Phone / WhatsApp: ${site.phoneDisplay}; email: ${site.email}`,
+    `- Languages: English, Hindi, Marathi`,
+    '',
+    ...groups.flatMap(g => [`## ${g.name}`, ...services.filter(s => s.group === g.id).map(s => `- [${s.name}](${u('/services/' + s.slug)}): ${answers.services[s.slug]}`), '']),
+    '## Guides',
+    ...posts.map(p => `- [${p.title}](${u('/blog/' + p.slug)}): ${p.excerpt}`),
+    '',
+    '## Company',
+    `- [About](${u('/about')})`,
+    `- [Environmental compliance FAQ](${u('/faq')})`,
+    `- [Company profile PDF](${u('/assets/Aaradhya-Enviro-Company-Profile.pdf')})`,
+    `- [Contact](${u('/contact')})`,
+    `- [Hindi](${u('/hi')}) · [Marathi](${u('/mr')})`,
+    '',
+  ];
+  write('llms.txt', lines.join('\n'));
 }
 
 function check(pages) {

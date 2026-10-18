@@ -2,7 +2,9 @@ const site = require('../config');
 const { groups, services, bySlug } = require('../data/services');
 const posts = require('../data/posts');
 const { esc, icon, photo, waLink, telLink } = require('../lib/html');
-const { breadcrumbs, pageHero, sectionHead, serviceCard, faqs, ctaBand } = require('../lib/components');
+const { breadcrumbs, pageHero, sectionHead, serviceCard, faqs, ctaBand, quickAnswer } = require('../lib/components');
+const answers = require('../data/answers');
+const reviewedLabel = new Date(site.contentReviewed + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const schema = require('../lib/schema');
 
 const indexFaqs = [
@@ -14,7 +16,7 @@ const indexFaqs = [
 
 function indexPage() {
   const crumbs = breadcrumbs([{ name: 'Services', path: '/services' }]);
-  const faq = faqs(indexFaqs, { lead: 'Quick answers about our environmental services and MPCB compliance.' });
+  const faq = faqs(indexFaqs, { lead: 'Quick answers about our environmental services and MPCB compliance. More in our <a href="/faq" class="font-semibold text-emerald-700 underline">compliance FAQ</a>.' });
   const body = `
 ${pageHero({ title: 'Environmental services', lead: `${services.length} specialised services across compliance, turnkey treatment projects, testing and plant management, delivered by one experienced team.`, crumbs, image: 'stp-aerial' })}
 
@@ -69,7 +71,8 @@ ${pageHero({ title: s.name, lead: s.lead, crumbs, image: s.image, eyebrow: group
 <section class="section bg-white">
   <div class="container-x grid gap-12 lg:grid-cols-3">
     <div class="min-w-0 lg:col-span-2">
-      <h2 class="h2">Overview</h2>
+      ${quickAnswer(answers.services[s.slug], { meta: `Reviewed by the ${site.name} compliance team · ${reviewedLabel}` })}
+      <h2 class="h2 mt-12">Overview</h2>
       <div class="mt-5 space-y-4 text-lg leading-relaxed text-gray-600">${s.overview.map(p => `<p>${esc(p)}</p>`).join('')}</div>
 
       <h2 class="h2 mt-14">Who needs this service</h2>
@@ -161,7 +164,7 @@ ${ctaBand({ title: `Discuss ${s.name} with our team`, text: 'Share your requirem
     active: 'services',
     title: s.title,
     description: s.description,
-    schema: [schema.service(s), crumbs.schema, faq.schema],
+    schema: [schema.service(s), { "@context": "https://schema.org", "@type": "WebPage", url: `${site.siteUrl}/services/${s.slug}`, name: s.title, description: answers.services[s.slug], lastReviewed: site.contentReviewed, dateModified: site.contentReviewed, reviewedBy: schema.orgRef, isPartOf: { "@id": `${site.siteUrl}/#website` } }, crumbs.schema, faq.schema],
     body,
   };
 }

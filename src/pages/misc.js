@@ -58,7 +58,7 @@ function sitemapPage() {
 ${pageHero({ title: 'Sitemap', lead: 'Every page on our website in one place.', crumbs, actions: false })}
 <section class="section bg-white">
   <div class="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-    ${col('Company', [['/', 'Home'], ['/about', 'About us'], ['/products', 'Products'], ['/gallery', 'Gallery'], ['/brochure', 'Company brochure'], ['/contact', 'Contact'], ['/privacy-policy', 'Privacy policy'], ['/terms-and-conditions', 'Terms & conditions']])}
+    ${col('Company', [['/', 'Home'], ['/about', 'About us'], ['/products', 'Products'], ['/gallery', 'Gallery'], ['/brochure', 'Company brochure'], ['/contact', 'Contact'], ['/faq', 'Compliance FAQ'], ['/hi', 'हिंदी'], ['/mr', 'मराठी'], ['/privacy-policy', 'Privacy policy'], ['/terms-and-conditions', 'Terms & conditions']])}
     ${groups.map(g => col(g.name, services.filter(s => s.group === g.id).map(s => [`/services/${s.slug}`, s.name]))).join('\n    ')}
   </div>
   <div class="container-x mt-14">

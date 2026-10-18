@@ -98,6 +98,22 @@ Aapka email Google Workspace pe hai (MX = smtp.google.com), isse aapke mail spam
 
 ---
 
+## Step 5b — AI search (AEO / GEO): ChatGPT, Perplexity, Gemini, Copilot
+
+Website me ye already hai: har service/article pe "Quick answer", `/faq` hub (26 Q&A), `llms.txt`,
+Hindi (`/hi`) aur Marathi (`/mr`) pages, IndexNow, aur "at a glance" company facts. Aapke end ke kaam:
+
+1. **Cloudflare → AI Crawl Control:** `GPTBot` (OpenAI) aur `ClaudeBot` (Anthropic) abhi **blocked (403)** hain → inhe **Allow** karein.
+   (OAI-SearchBot, ChatGPT-User, PerplexityBot, Googlebot, Bingbot pehle se allowed hain.)
+2. **Bing Webmaster Tools** (https://www.bing.com/webmasters) → "Import from Google Search Console" → sitemap submit.
+   ChatGPT search aur Copilot Bing ke index se results lete hain.
+3. Har deploy ke baad: `npm run indexnow` (naye/badle pages Bing ko turant bhejta hai). Pehli baar: `npm run indexnow -- --all`.
+4. Har mahine ChatGPT / Perplexity / Gemini me puchhein: *"ETP consultant in Chhatrapati Sambhajinagar"*,
+   *"MPCB consent consultant Waluj"* — naam aata hai ya nahi, note karein.
+5. Doosri sites pe same naam/address/phone ke saath listing: IndiaMART, JustDial, TradeIndia, LinkedIn company page (har mahine post).
+
+---
+
 ## Step 6 — Content jo sirf aap de sakte hain (trust badhane ke liye)
 
 | Kya | Kahan daalna hai | Kyun |

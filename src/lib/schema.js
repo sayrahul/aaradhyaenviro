@@ -16,8 +16,11 @@ function organization() {
     url: site.siteUrl + '/',
     logo: abs('/assets/main-logo.png'),
     image: abs('/assets/img/og-image.jpg'),
+    slogan: 'Environmental compliance and pollution control, handled end-to-end',
     telephone: site.phoneE164,
     email: site.email,
+    contactPoint: [{ '@type': 'ContactPoint', telephone: site.phoneE164, email: site.email, contactType: 'customer service', areaServed: 'IN', availableLanguage: ['English', 'Hindi', 'Marathi'] }],
+    foundingLocation: { '@type': 'Place', name: 'Chhatrapati Sambhajinagar, Maharashtra, India' },
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.address.street,
@@ -30,7 +33,7 @@ function organization() {
     foundingDate: site.foundingYear,
     openingHours: site.openingHoursSchema,
     areaServed: [
-      { '@type': 'City', name: 'Chhatrapati Sambhajinagar' },
+      ...site.areasServed.filter(a => !/MIDC/.test(a)).map(name => ({ '@type': 'City', name })),
       { '@type': 'State', name: 'Maharashtra' },
     ],
     knowsAbout: ['MPCB consent', 'Environmental Clearance', 'Effluent Treatment Plant', 'Sewage Treatment Plant', 'Zero Liquid Discharge', 'Air pollution control', 'Hazardous waste management', 'Plastic EPR', 'Environmental monitoring'],

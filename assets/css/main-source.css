@@ -83,6 +83,8 @@
   .lightbox::backdrop { background: rgb(3 7 18 / 0.92); }
   .lightbox__btn { @apply absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20; }
 
+  .quick-answer { @apply rounded-2xl border-l-4 border-emerald-600 bg-emerald-50 p-5 sm:p-6; }
+
   /* Long-form article and legal text */
   .prose-article { @apply max-w-none text-[1.0625rem] leading-relaxed text-gray-700; }
   .prose-article > * + * { @apply mt-5; }

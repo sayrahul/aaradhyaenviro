@@ -1,7 +1,7 @@
 const site = require('../config');
 const { services } = require('../data/services');
 const { esc, icon, waLink, telLink } = require('../lib/html');
-const { breadcrumbs, pageHero } = require('../lib/components');
+const { breadcrumbs, pageHero, facts } = require('../lib/components');
 const schema = require('../lib/schema');
 
 module.exports = () => {
@@ -79,6 +79,10 @@ ${pageHero({ title: 'Contact us', lead: 'Tell us about your unit and requirement
           <p class="mt-1 text-sm leading-relaxed text-gray-600">${esc(site.address.full)}</p>
           <a href="${directions}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800">Open in Google Maps ${icon('external-link', 'w-4 h-4')}</a>
         </div>
+      </div>
+      <div class="rounded-2xl border border-gray-200 bg-white p-6">
+        <h2 class="mb-4 font-semibold text-gray-900">Company details</h2>
+        ${facts()}
       </div>
       <div class="rounded-2xl bg-gray-900 p-6 text-gray-300">
         <h2 class="font-semibold text-white">What happens next?</h2>

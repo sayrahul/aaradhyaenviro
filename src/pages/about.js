@@ -1,7 +1,7 @@
 const site = require('../config');
 const { values, reasons } = require('../data/content');
 const { esc, icon, photo } = require('../lib/html');
-const { breadcrumbs, pageHero, sectionHead, ctaBand, statsRow, clientsSection } = require('../lib/components');
+const { breadcrumbs, pageHero, sectionHead, ctaBand, statsRow, clientsSection, facts } = require('../lib/components');
 const schema = require('../lib/schema');
 
 module.exports = () => {
@@ -36,6 +36,13 @@ ${pageHero({ title: 'About Aaradhya Enviro', lead: 'An environmental consultancy
 </section>
 
 <section class="bg-white pb-16 lg:pb-24"><div class="container-x">${statsRow()}</div></section>
+
+<section class="bg-gray-50 py-14" aria-labelledby="facts-title">
+  <div class="container-x max-w-5xl">
+    <h2 id="facts-title" class="text-2xl font-bold text-gray-900">Aaradhya Enviro at a glance</h2>
+    <div class="mt-6">${facts()}</div>
+  </div>
+</section>
 
 <section class="section bg-gray-50">
   <div class="container-x grid gap-6 md:grid-cols-2">

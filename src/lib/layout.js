@@ -15,7 +15,7 @@ const NAV = [
 const servicesIn = id => services.filter(s => s.group === id);
 
 // ───────────────────────────── <head> ─────────────────────────────
-function head({ title, description, path, image, type = 'website', noindex = false, schema = [], preload = '' }) {
+function head({ title, description, path, image, type = 'website', noindex = false, schema = [], preload = '', alternates = [], locale = 'en_IN' }) {
   const url = abs(path);
   const ogImage = abs(image || '/assets/img/og-image.jpg');
   const branded = `${title} | ${site.name}`;
@@ -26,7 +26,7 @@ function head({ title, description, path, image, type = 'website', noindex = fal
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
-${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large">'}
+${alternates.map(a => `<link rel="alternate" hreflang="${a.lang}" href="${abs(a.path)}">\n`).join('')}${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large">'}
 <meta name="theme-color" content="#047857">
 <link rel="preload" href="/assets/fonts/e4af272ccee01ff0-s.p.woff2" as="font" type="font/woff2" crossorigin>
 ${preload}<link rel="stylesheet" href="/assets/css/main.css?v=${versions.css}">
@@ -35,7 +35,7 @@ ${preload}<link rel="stylesheet" href="/assets/css/main.css?v=${versions.css}">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="${type}">
 <meta property="og:site_name" content="${esc(site.name)}">
-<meta property="og:locale" content="en_IN">
+<meta property="og:locale" content="${locale}">
 <meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
@@ -187,6 +187,7 @@ function footer() {
         <li><a href="/gallery" class="hover:text-emerald-400">Gallery</a></li>
         <li><a href="/blog" class="hover:text-emerald-400">Blog</a></li>
         <li><a href="/brochure" class="hover:text-emerald-400">Company brochure</a></li>
+        <li><a href="/faq" class="hover:text-emerald-400">Compliance FAQ</a></li>
         <li><a href="/contact" class="hover:text-emerald-400">Contact</a></li>
       </ul>
     </div>
@@ -207,6 +208,8 @@ function footer() {
         <a href="/privacy-policy" class="hover:text-emerald-400">Privacy policy</a>
         <a href="/terms-and-conditions" class="hover:text-emerald-400">Terms &amp; conditions</a>
         <a href="/sitemap" class="hover:text-emerald-400">Sitemap</a>
+        <a href="/hi" hreflang="hi" lang="hi" class="hover:text-emerald-400">हिंदी</a>
+        <a href="/mr" hreflang="mr" lang="mr" class="hover:text-emerald-400">मराठी</a>
       </nav>
       <p class="flex flex-wrap gap-x-3 gap-y-1 text-gray-500">
         <span>Design &amp; development: <a href="${site.credits.designer.url}" target="_blank" rel="noopener" class="text-gray-300 hover:text-emerald-400">${esc(site.credits.designer.name)}</a></span>
@@ -257,10 +260,10 @@ function callbackDialog() {
 }
 
 // ───────────────────────────── Page ─────────────────────────────
-function page({ active, body, ...meta }) {
+function page({ active, body, lang = 'en-IN', ...meta }) {
   const ga = site.ga4Id ? ` data-ga4="${esc(site.ga4Id)}"` : '';
   return `<!DOCTYPE html>
-<html lang="en-IN"${ga}>
+<html lang="${lang}"${ga}>
 ${head(meta)}
 <body class="flex min-h-screen flex-col bg-white font-sans text-gray-700 antialiased">
 ${header(active)}
