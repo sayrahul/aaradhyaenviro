@@ -9,11 +9,11 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
-const port = Number(process.env.PORT) || 8080;
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml',
   '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.xml': 'application/xml',
   '.txt': 'text/plain', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.json': 'application/json',
+  '.pdf': 'application/pdf',
 };
 
 function resolve(urlPath) {
@@ -27,18 +27,25 @@ function resolve(urlPath) {
   return null;
 }
 
-http.createServer((req, res) => {
-  const url = req.url.split('?')[0];
-  if (url.endsWith('.html')) {
-    const to = url === '/index.html' ? '/' : url.slice(0, -5);
-    res.writeHead(307, { Location: to });
-    return res.end();
-  }
-  const file = resolve(url);
-  if (!file) {
-    res.writeHead(404, { 'Content-Type': types['.html'] });
-    return res.end(fs.readFileSync(path.join(root, '404.html')));
-  }
-  res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
-  fs.createReadStream(file).pipe(res);
-}).listen(port, () => console.log(`Preview: http://localhost:${port}`));
+function start(port = Number(process.env.PORT) || 8080) {
+  const server = http.createServer((req, res) => {
+    const url = req.url.split('?')[0];
+    if (url.endsWith('.html')) {
+      const to = url === '/index.html' ? '/' : url.slice(0, -5);
+      res.writeHead(307, { Location: to });
+      return res.end();
+    }
+    const file = resolve(url);
+    if (!file) {
+      res.writeHead(404, { 'Content-Type': types['.html'] });
+      return res.end(fs.readFileSync(path.join(root, '404.html')));
+    }
+    res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
+    fs.createReadStream(file).pipe(res);
+  });
+  return new Promise(r => server.listen(port, () => r(server)));
+}
+
+if (require.main === module) start().then(s => console.log(`Preview: http://localhost:${s.address().port}`));
+
+module.exports = { start };

@@ -50,7 +50,7 @@ module.exports = {
 
   social: {
     facebook: 'https://www.facebook.com/AaradhyaEnviro',
-    instagram: 'https://www.instagram.com/aaradhyaenviro',
+    instagram: 'https://www.instagram.com/aaradhyaenviro/',
     linkedin: 'https://www.linkedin.com/company/aaradhyaenviro/',
   },
 

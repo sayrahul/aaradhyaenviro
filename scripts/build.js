@@ -21,6 +21,7 @@ const site = require('../src/config');
 const { versions } = require('../src/lib/html');
 const { sprite } = require('../src/lib/icons');
 const { page } = require('../src/lib/layout');
+const qr = require('../src/lib/qr');
 
 const hash = buf => crypto.createHash('sha1').update(buf).digest('hex').slice(0, 10);
 const write = (rel, data) => {
@@ -126,6 +127,7 @@ function check(pages) {
 (async () => {
   const t = Date.now();
   await buildAssets();
+  await qr.prepare();
   const pages = renderPages();
   writePages(pages);
   writeSeoFiles(pages);

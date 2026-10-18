@@ -45,7 +45,10 @@ async function doPhotos() {
       await sharp(buf).resize({ width: w }).webp({ quality: 72, effort: 5 }).toFile(path.join(outDir, `${key}-${w}.webp`));
     }
     const maxW = uniq[uniq.length - 1];
-    meta.photos[key] = { widths: uniq, width: maxW, height: Math.round(height * maxW / width) };
+    // JPEG copy for the brochure PDF: PDFs cannot embed WebP, Chrome would store it uncompressed.
+    const pw = Math.min(width, 1100);
+    await sharp(buf).resize({ width: pw }).jpeg({ quality: 68, mozjpeg: true }).toFile(path.join(outDir, `${key}-print.jpg`));
+    meta.photos[key] = { widths: uniq, width: maxW, height: Math.round(height * maxW / width), print: { width: pw, height: Math.round(height * pw / width) } };
   }
 }
 

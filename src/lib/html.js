@@ -19,12 +19,19 @@ function icon(name, cls = 'w-5 h-5') {
 }
 
 // Responsive photo with real width/height (prevents layout shift).
-function photo(key, { sizes = '100vw', cls = '', eager = false, alt } = {}) {
+function photo(key, { sizes = '100vw', cls = '', eager = false, lazy = true, alt } = {}) {
   const m = imageMeta.photos[key];
   if (!m) throw new Error(`Unknown photo "${key}"`);
   const srcset = m.widths.map(w => `/assets/img/${key}-${w}.webp ${w}w`).join(', ');
   const fallback = m.widths.find(w => w >= 1024) || m.width;
-  return `<img src="/assets/img/${key}-${fallback}.webp" srcset="${srcset}" sizes="${sizes}" width="${m.width}" height="${m.height}" alt="${esc(alt ?? photos[key].alt)}" class="${cls}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
+  return `<img src="/assets/img/${key}-${fallback}.webp" srcset="${srcset}" sizes="${sizes}" width="${m.width}" height="${m.height}" alt="${esc(alt ?? photos[key].alt)}" class="${cls}"${eager ? ' fetchpriority="high"' : lazy ? ' loading="lazy"' : ''} decoding="async">`;
+}
+
+// JPEG version used on the printable brochure (keeps the PDF small).
+function printPhoto(key, cls = '') {
+  const m = imageMeta.photos[key];
+  if (!m || !m.print) throw new Error(`No print image for "${key}" – run npm run images`);
+  return `<img src="/assets/img/${key}-print.jpg" width="${m.print.width}" height="${m.print.height}" alt="${esc(photos[key].alt)}" class="${cls}" decoding="async">`;
 }
 
 function photoUrl(key, width = 1024) {
@@ -38,9 +45,9 @@ function logoImg(cls = 'h-10 w-auto', { eager = false } = {}) {
   return `<img src="/assets/img/logo.webp" width="${width}" height="${height}" alt="${esc(site.name)} – ${esc(site.tagline)}" class="${cls}"${eager ? '' : ' loading="lazy"'} decoding="async">`;
 }
 
-function clientLogo(c, cls = '') {
+function clientLogo(c, cls = '', { lazy = true } = {}) {
   const m = imageMeta.clients[c.file];
-  return `<img src="/assets/img/${m.src}" width="${m.width}" height="${m.height}" alt="${esc(c.name)} logo" class="${cls}" loading="lazy" decoding="async">`;
+  return `<img src="/assets/img/${m.src}" width="${m.width}" height="${m.height}" alt="${esc(c.name)} logo" class="${cls}"${lazy ? ' loading="lazy"' : ''} decoding="async">`;
 }
 
 const waLink = (text = 'Hello Aaradhya Enviro, I would like to know more about your environmental services.') =>
@@ -49,4 +56,4 @@ const telLink = () => `tel:${site.phoneE164}`;
 
 const jsonLd = obj => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
-module.exports = { versions, esc, abs, icon, photo, photoUrl, logoImg, clientLogo, waLink, telLink, jsonLd };
+module.exports = { versions, esc, abs, icon, photo, printPhoto, photoUrl, logoImg, clientLogo, waLink, telLink, jsonLd };

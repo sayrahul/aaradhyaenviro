@@ -7,7 +7,11 @@
         1600
       ],
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "print": {
+        "width": 1100,
+        "height": 825
+      }
     },
     "ro-plant-hall": {
       "widths": [
@@ -16,7 +20,11 @@
         1600
       ],
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "print": {
+        "width": 1100,
+        "height": 825
+      }
     },
     "engineer-factory": {
       "widths": [
@@ -25,7 +33,11 @@
         1156
       ],
       "width": 1156,
-      "height": 517
+      "height": 517,
+      "print": {
+        "width": 1100,
+        "height": 492
+      }
     },
     "engineers-lab": {
       "widths": [
@@ -34,7 +46,11 @@
         1600
       ],
       "width": 1600,
-      "height": 838
+      "height": 838,
+      "print": {
+        "width": 1100,
+        "height": 576
+      }
     },
     "apc-stack": {
       "widths": [
@@ -43,14 +59,22 @@
         1156
       ],
       "width": 1156,
-      "height": 517
+      "height": 517,
+      "print": {
+        "width": 1100,
+        "height": 492
+      }
     },
     "monitoring-tablet": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "monitoring-room": {
       "widths": [
@@ -58,70 +82,110 @@
         1024
       ],
       "width": 1024,
-      "height": 1024
+      "height": 1024,
+      "print": {
+        "width": 1024,
+        "height": 1024
+      }
     },
     "etp-site": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "etp-plant": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "stp-clarifiers": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "stp-packaged": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "zld-plant": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "ro-skid": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "ro-system": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "wtp": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "apc-scrubber": {
       "widths": [
         600
       ],
       "width": 600,
-      "height": 500
+      "height": 500,
+      "print": {
+        "width": 600,
+        "height": 500
+      }
     },
     "strategy": {
       "widths": [
@@ -130,7 +194,11 @@
         1600
       ],
       "width": 1600,
-      "height": 1124
+      "height": 1124,
+      "print": {
+        "width": 1100,
+        "height": 773
+      }
     },
     "green-bulb": {
       "widths": [
@@ -139,7 +207,11 @@
         1600
       ],
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "print": {
+        "width": 1100,
+        "height": 825
+      }
     },
     "eco-city": {
       "widths": [
@@ -148,7 +220,11 @@
         1152
       ],
       "width": 1152,
-      "height": 864
+      "height": 864,
+      "print": {
+        "width": 1100,
+        "height": 825
+      }
     },
     "sapling": {
       "widths": [
@@ -157,7 +233,11 @@
         1600
       ],
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "print": {
+        "width": 1100,
+        "height": 825
+      }
     },
     "green-energy": {
       "widths": [
@@ -166,7 +246,11 @@
         1048
       ],
       "width": 1048,
-      "height": 588
+      "height": 588,
+      "print": {
+        "width": 1048,
+        "height": 588
+      }
     }
   },
   "clients": {

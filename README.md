@@ -13,6 +13,8 @@ npm install          # once
 npm run build        # regenerate HTML, CSS, JS, sitemap (≈5 s)
 npm run preview      # http://localhost:8080 with clean URLs, like Cloudflare
 npm run images       # only after adding/replacing photos or logos
+npm run pdf          # regenerate the brochure PDF (needs Chrome/Edge) – run after changing
+                     # services, stats, clients, testimonials or contact details
 ```
 
 Requires Node.js 18+.
@@ -50,6 +52,13 @@ a single `<h1>` and duplicate ids, and exits non-zero if anything fails.
 `scripts/images.js` converts `src/images/**` into responsive WebP files in `assets/img/`,
 generates `favicon.ico`, `apple-touch-icon.png`, PWA icons and the 1200×630 social image,
 and records real dimensions in `src/data/image-meta.json`.
+
+## Company profile PDF
+
+`/brochure` is laid out as eight exact A4 sheets. `scripts/pdf.js` opens it in headless Chrome,
+warns if any sheet overflows its page, and writes `assets/Aaradhya-Enviro-Company-Profile.pdf`
+(the file behind the "Download PDF" button, ~2 MB). Brochure photos use the `-print.jpg`
+copies made by `npm run images`, because PDFs cannot embed WebP efficiently.
 
 ## Hosting notes (Cloudflare)
 

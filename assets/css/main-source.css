@@ -106,14 +106,25 @@
   .prose-article .not-prose .btn-primary,
   .prose-article .not-prose .btn-wa { @apply text-white; }
 
-  /* Brochure (A4 sheets on screen, clean pages in print) */
-  .brochure-sheet { @apply mx-auto mb-8 min-h-[297mm] w-full max-w-[210mm] bg-white p-6 text-gray-700 shadow-lg sm:p-[14mm]; }
-  .brochure-h { @apply mb-6 border-b-2 border-emerald-600 pb-3 text-2xl font-bold text-gray-900; }
+  /* Brochure: fluid cards on phones, exact A4 pages from md up and in print. */
+  .brochure { @apply bg-gray-100 py-6 md:py-12; }
+  .sheet { @apply relative mx-auto mb-6 w-[calc(100%-2rem)] max-w-[210mm] overflow-hidden rounded-xl bg-white p-6 text-gray-700 shadow-lg; }
+  .sheet--bleed { @apply p-0; }
+  .sheet-footer { @apply absolute bottom-[6mm] left-[12mm] right-[12mm] hidden justify-between border-t border-gray-200 pt-2 text-[10px] text-gray-400; }
+  @media (min-width: 768px) {
+    .sheet { width: 210mm; height: 297mm; padding: 12mm 12mm 16mm; border-radius: 0; margin-bottom: 2.5rem; }
+    .sheet--bleed { padding: 0; }
+    .sheet-footer { display: flex; }
+  }
 }
 
 @media print {
   @page { size: A4; margin: 0; }
-  header, footer, .skip-link, .no-print, [data-action-bar], dialog, a[aria-label="Chat with us on WhatsApp"], body > div.h-16 { display: none !important; }
-  .brochure-sheet { margin: 0; box-shadow: none; break-after: page; max-width: none; width: 210mm; min-height: 0; padding: 14mm; }
+  body > header, body > footer, body > .hidden, .skip-link, .no-print, [data-action-bar], dialog, a[aria-label="Chat with us on WhatsApp"], body > div.h-16 { display: none !important; }
+  .brochure { padding: 0; background: #fff; }
+  .sheet { width: 210mm; height: 297mm; max-width: none; margin: 0; padding: 12mm 12mm 16mm; border-radius: 0; box-shadow: none; overflow: hidden; break-after: page; }
+  .sheet:last-child { break-after: auto; }
+  .sheet--bleed { padding: 0; }
+  .sheet-footer { display: flex; }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

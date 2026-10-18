@@ -126,6 +126,8 @@ Apps Script (Google Sheet) wale form endpoints wahi purane hain, field names bhi
 
 1. Text badalna hai → upar wali table me file dhundhein (zyada tar `src/config.js`, `src/data/services.js`, `src/data/content.js`).
 2. `npm run build` chalayein — "Checks passed" aana chahiye. Error aaye to wahi line bata dega.
+   Services, numbers, clients, testimonials ya contact details badle hain to **`npm run pdf`** bhi chalayein,
+   taaki brochure ki PDF (Download PDF button) bhi update ho jaye.
 3. `npm run preview` se dekh lein → commit → push.
 
 **Root ke `.html` files kabhi direct edit na karein** — agle build me overwrite ho jayenge.
