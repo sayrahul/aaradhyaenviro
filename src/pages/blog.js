@@ -62,6 +62,12 @@ function postPage(p, i) {
   const more = posts.filter(x => x.slug !== p.slug && (x.category === p.category || x.service === p.service)).slice(0, 3);
   const fill = posts.filter(x => x.slug !== p.slug && !more.includes(x)).slice(0, 3 - more.length);
   const readNext = [...more, ...fill];
+  // Optional per-post FAQs (posts.json "faqs": [{q, a}]) → visible accordion + FAQPage schema.
+  const faqHtml = p.faqs && p.faqs.length ? `
+        <h2>Frequently asked questions</h2>
+        <div class="not-prose mt-5 divide-y divide-gray-200 rounded-2xl border border-gray-200">
+          ${p.faqs.map(f => `<details class="group"><summary class="flex cursor-pointer list-none items-start justify-between gap-4 p-5 font-semibold text-gray-900 hover:text-emerald-700"><span>${esc(f.q)}</span>${icon('chevron-down', 'mt-0.5 w-5 h-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180')}</summary><div class="px-5 pb-5 leading-relaxed text-gray-600">${esc(f.a)}</div></details>`).join('\n          ')}
+        </div>` : '';
   const prev = posts[i + 1];
   const next = posts[i - 1];
 
@@ -86,7 +92,7 @@ function postPage(p, i) {
   <div class="bg-white">
     <div class="container-x grid gap-12 py-12 lg:grid-cols-3 lg:py-16">
       <div class="prose-article min-w-0 lg:col-span-2">
-${p.body}
+${faqHtml && p.body.includes('<aside class="sources">') ? p.body.replace('<aside class="sources">', `${faqHtml}\n<aside class="sources">`) : p.body + faqHtml}
         <aside class="not-prose mt-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 sm:p-8">
           <p class="text-sm font-semibold uppercase tracking-wider text-emerald-700">Need expert help?</p>
           <h2 class="mt-2 text-xl font-bold text-gray-900">${esc(svc.name)}</h2>
@@ -148,6 +154,7 @@ ${p.body}
         inLanguage: 'en-IN',
       },
       crumbs.schema,
+      ...(p.faqs && p.faqs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: p.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
     ],
     body,
   };

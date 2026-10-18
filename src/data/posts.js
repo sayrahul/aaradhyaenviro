@@ -5,6 +5,11 @@ const path = require('path');
 const list = require('../content/posts.json');
 
 const extra = {
+  'mpcb-show-cause-notice-closure-direction-what-to-do': { image: 'engineers-lab', service: 'legal-compliances' },
+  'environmental-compliance-checklist-midc-chhatrapati-sambhajinagar': { image: 'engineer-factory', service: 'legal-compliances' },
+  'etp-cost-in-india-price-factors': { image: 'etp-plant', service: 'etp-stp-installation' },
+  'stp-for-housing-societies-maharashtra': { image: 'stp-packaged', service: 'etp-stp-installation' },
+  'mpcb-red-orange-green-white-category-guide': { image: 'strategy', service: 'legal-compliances' },
   'comprehensive-guide-to-etp-and-stp-operations': { image: 'etp-site', service: 'etp-stp-installation' },
   'zero-liquid-discharge-the-future-of-industry': { image: 'zld-plant', service: 'zld-ro-systems' },
   'mastering-mpcb-consent-procedures': { image: 'engineer-factory', service: 'legal-compliances' },

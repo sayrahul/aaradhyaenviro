@@ -1,5 +1,110 @@
 [
   {
+    "slug": "mpcb-show-cause-notice-closure-direction-what-to-do",
+    "title": "MPCB Show-Cause or Closure Notice? What to Do First",
+    "date": "Oct 09, 2026",
+    "category": "Compliance",
+    "excerpt": "Received an MPCB show-cause notice or closure direction? A practical 7-day plan: root cause, corrective action, evidence and a reply that works.",
+    "faqs": [
+      {
+        "q": "How much time do I get to reply to an MPCB show-cause notice?",
+        "a": "The reply period is written in the notice itself and is often short. Note the deadline on the day you receive the notice and submit a complete, evidence-backed reply before it expires."
+      },
+      {
+        "q": "Can an MPCB closure direction be revoked?",
+        "a": "Yes. Closure directions can be revoked once the board is satisfied that the causes have been corrected. This usually requires completed corrective work, supporting test reports and documents, an application for revocation and, where required, a bank guarantee."
+      },
+      {
+        "q": "Should I reply to a notice myself or take professional help?",
+        "a": "For simple procedural issues a direct reply may be enough. For effluent or emission exceedances, closure threats or repeated notices, technical and legal support helps you fix the root cause and present a credible action plan."
+      }
+    ]
+  },
+  {
+    "slug": "environmental-compliance-checklist-midc-chhatrapati-sambhajinagar",
+    "title": "MIDC Environmental Compliance Checklist: Sambhajinagar",
+    "date": "Sep 26, 2026",
+    "category": "Compliance",
+    "excerpt": "Step-by-step environmental approvals for new units in Waluj, Shendra, Chikalthana and AURIC: category check, CTE, treatment plant, CTO and yearly returns.",
+    "faqs": [
+      {
+        "q": "Do I need MPCB consent before starting construction in MIDC?",
+        "a": "Yes. Units that need consent must obtain Consent to Establish (CTE) from MPCB before construction or expansion, and Consent to Operate (CTO) before starting production. White category units are exempt but must inform the board."
+      },
+      {
+        "q": "Can I use the previous owner's consent when I take over a shed?",
+        "a": "Not automatically. Consent is issued to a specific occupier, activity and capacity. A change of ownership, product or process needs a consent transfer, amendment or fresh consent."
+      },
+      {
+        "q": "Which yearly filings are due after my unit starts?",
+        "a": "Typically the Environmental Statement (Form V) by 30 September, the hazardous waste annual return by 30 June if you generate hazardous waste, monitoring as per your consent, and consent renewal before expiry."
+      }
+    ]
+  },
+  {
+    "slug": "etp-cost-in-india-price-factors",
+    "title": "ETP Cost in India: What Really Decides the Price",
+    "date": "Sep 12, 2026",
+    "category": "Water Treatment",
+    "excerpt": "What decides the cost of an effluent treatment plant: flow, pollution load, TDS, outlet norms and technology, plus the running costs buyers often forget.",
+    "faqs": [
+      {
+        "q": "What is the cost of a 10 KLD or 50 KLD ETP?",
+        "a": "Small ETPs of around 10 to 50 KLD for moderate effluents often start in the range of ₹5 to 15 lakh. The real price depends on pollution load, TDS, required outlet quality and civil scope, so a site-specific estimate needs your wastewater analysis."
+      },
+      {
+        "q": "Why do two ETP quotes for the same KLD differ so much?",
+        "a": "Quotes often assume different design bases. One may include equalisation, sludge handling, tertiary treatment and automation that another leaves out, or may be designed for a lower pollution load than your actual effluent."
+      },
+      {
+        "q": "What are the main running costs of an ETP?",
+        "a": "Electricity for blowers and pumps, chemicals, operators or an O&M contract, hazardous sludge disposal, laboratory testing and maintenance spares."
+      }
+    ]
+  },
+  {
+    "slug": "stp-for-housing-societies-maharashtra",
+    "title": "STP for Housing Societies in Maharashtra: Complete Guide",
+    "date": "Aug 29, 2026",
+    "category": "Water Treatment",
+    "excerpt": "STP guide for housing societies: why it is required, how to size it in KLD, MBBR vs SBR vs MBR, treated water reuse, running costs and common problems.",
+    "faqs": [
+      {
+        "q": "How do I calculate the STP capacity for my society?",
+        "a": "Multiply the number of flats by average occupancy (often 5 persons) to get population, multiply by about 135 litres per person per day for water demand, take roughly 80% of that as sewage, and add a margin for peaks. A 200-flat society typically needs an STP of around 110 to 120 KLD."
+      },
+      {
+        "q": "Can STP treated water be used for flushing and gardening?",
+        "a": "Yes. With proper tertiary filtration and disinfection, treated water is commonly reused for toilet flushing, gardening, car washing and cooling, which reduces fresh water and tanker costs."
+      },
+      {
+        "q": "Why does our society STP smell?",
+        "a": "The most common causes are insufficient aeration, blower breakdown, or switching the plant off at night to save electricity. An STP must run continuously to stay odour-free."
+      }
+    ]
+  },
+  {
+    "slug": "mpcb-red-orange-green-white-category-guide",
+    "title": "MPCB Red, Orange, Green & White Categories Explained",
+    "date": "Aug 14, 2026",
+    "category": "Compliance",
+    "excerpt": "How MPCB classifies industries as Red, Orange, Green or White, how to find your category, why it matters for consent, and common classification mistakes.",
+    "faqs": [
+      {
+        "q": "How is the Red, Orange, Green or White category decided?",
+        "a": "CPCB assigned each industrial sector a Pollution Index from 0 to 100 based on emissions, effluent, hazardous waste and resource use. Sectors scoring 60 and above are Red, 41 to 59 Orange, 21 to 40 Green, and up to 20 White."
+      },
+      {
+        "q": "Does a White category industry need MPCB consent?",
+        "a": "No. White category activities are practically non-polluting and do not need consent, but they must inform the board, and other environmental rules on waste and noise still apply."
+      },
+      {
+        "q": "If my unit has several activities, which category applies?",
+        "a": "Generally the most polluting activity decides the category of the unit. Utilities such as boilers and DG sets, and any expansion or new product, must also be considered."
+      }
+    ]
+  },
+  {
     "slug": "comprehensive-guide-to-etp-and-stp-operations",
     "title": "Comprehensive Guide to ETP & STP Operations",
     "date": "Jul 10, 2026",

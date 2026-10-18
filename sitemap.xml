@@ -9,7 +9,6 @@
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/zld-plant-600.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/ro-system-600.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineers-lab-1024.webp</image:loc></image:image>
-    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/etp-site-600.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineer-factory-1024.webp</image:loc></image:image>
   </url>
   <url>
@@ -143,16 +142,41 @@
   <url>
     <loc>https://aaradhyaenviro.com/blog</loc>
     <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineers-lab-1024.webp</image:loc></image:image>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineer-factory-1024.webp</image:loc></image:image>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/etp-plant-600.webp</image:loc></image:image>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/stp-packaged-600.webp</image:loc></image:image>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/strategy-1024.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/etp-site-600.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/zld-plant-600.webp</image:loc></image:image>
-    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineer-factory-1024.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/apc-scrubber-600.webp</image:loc></image:image>
-    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineers-lab-1024.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/eco-city-1024.webp</image:loc></image:image>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/sapling-1024.webp</image:loc></image:image>
-    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/wtp-600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aaradhyaenviro.com/blog/mpcb-show-cause-notice-closure-direction-what-to-do</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineers-lab-1024.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aaradhyaenviro.com/blog/environmental-compliance-checklist-midc-chhatrapati-sambhajinagar</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/engineer-factory-1024.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aaradhyaenviro.com/blog/etp-cost-in-india-price-factors</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/etp-plant-600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aaradhyaenviro.com/blog/stp-for-housing-societies-maharashtra</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/stp-packaged-600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aaradhyaenviro.com/blog/mpcb-red-orange-green-white-category-guide</loc>
+    <lastmod>2026-10-18</lastmod>
     <image:image><image:loc>https://aaradhyaenviro.com/assets/img/strategy-1024.webp</image:loc></image:image>
-    <image:image><image:loc>https://aaradhyaenviro.com/assets/img/monitoring-room-1024.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://aaradhyaenviro.com/blog/comprehensive-guide-to-etp-and-stp-operations</loc>
