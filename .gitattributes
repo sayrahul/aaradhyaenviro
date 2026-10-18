@@ -1,0 +1,9 @@
+# Generated and source text files always use LF (keeps builds byte-identical across machines).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff2 binary

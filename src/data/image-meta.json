@@ -1,0 +1,290 @@
+{
+  "photos": {
+    "stp-aerial": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 1200
+    },
+    "ro-plant-hall": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 1200
+    },
+    "engineer-factory": {
+      "widths": [
+        640,
+        1024,
+        1156
+      ],
+      "width": 1156,
+      "height": 517
+    },
+    "engineers-lab": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 838
+    },
+    "apc-stack": {
+      "widths": [
+        640,
+        1024,
+        1156
+      ],
+      "width": 1156,
+      "height": 517
+    },
+    "monitoring-tablet": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "monitoring-room": {
+      "widths": [
+        640,
+        1024
+      ],
+      "width": 1024,
+      "height": 1024
+    },
+    "etp-site": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "etp-plant": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "stp-clarifiers": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "stp-packaged": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "zld-plant": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "ro-skid": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "ro-system": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "wtp": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "apc-scrubber": {
+      "widths": [
+        600
+      ],
+      "width": 600,
+      "height": 500
+    },
+    "strategy": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 1124
+    },
+    "green-bulb": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 1200
+    },
+    "eco-city": {
+      "widths": [
+        640,
+        1024,
+        1152
+      ],
+      "width": 1152,
+      "height": 864
+    },
+    "sapling": {
+      "widths": [
+        640,
+        1024,
+        1600
+      ],
+      "width": 1600,
+      "height": 1200
+    },
+    "green-energy": {
+      "widths": [
+        640,
+        1024,
+        1048
+      ],
+      "width": 1048,
+      "height": 588
+    }
+  },
+  "clients": {
+    "shapoorji-pallonji.svg": {
+      "src": "clients/shapoorji-pallonji.svg",
+      "width": 180,
+      "height": 34
+    },
+    "shimizu-corporation.jpeg": {
+      "src": "clients/shimizu-corporation.webp",
+      "width": 320,
+      "height": 94
+    },
+    "harman.png": {
+      "src": "clients/harman.webp",
+      "width": 244,
+      "height": 81
+    },
+    "nhk.png": {
+      "src": "clients/nhk.webp",
+      "width": 320,
+      "height": 31
+    },
+    "atul.jpeg": {
+      "src": "clients/atul.webp",
+      "width": 160,
+      "height": 160
+    },
+    "parason.svg": {
+      "src": "clients/parason.svg",
+      "width": 724,
+      "height": 114
+    },
+    "renuka-sugar-renapur.jpeg": {
+      "src": "clients/renuka-sugar-renapur.webp",
+      "width": 213,
+      "height": 160
+    },
+    "bai-kakaji-group.jpeg": {
+      "src": "clients/bai-kakaji-group.webp",
+      "width": 320,
+      "height": 137
+    },
+    "rohan-builders.jpeg": {
+      "src": "clients/rohan-builders.webp",
+      "width": 320,
+      "height": 113
+    },
+    "sj-contracts.jpeg": {
+      "src": "clients/sj-contracts.webp",
+      "width": 198,
+      "height": 160
+    },
+    "adora-products.webp": {
+      "src": "clients/adora-products.webp",
+      "width": 320,
+      "height": 77
+    },
+    "cast-4-aluminium.png": {
+      "src": "clients/cast-4-aluminium.webp",
+      "width": 319,
+      "height": 160
+    },
+    "chandra-electricals.png": {
+      "src": "clients/chandra-electricals.webp",
+      "width": 320,
+      "height": 48
+    },
+    "rayon-illuminations.png": {
+      "src": "clients/rayon-illuminations.webp",
+      "width": 261,
+      "height": 89
+    },
+    "fintek.png": {
+      "src": "clients/fintek.webp",
+      "width": 226,
+      "height": 160
+    },
+    "gubba-cold-storage.gif": {
+      "src": "clients/gubba-cold-storage.webp",
+      "width": 146,
+      "height": 107
+    },
+    "madhura.png": {
+      "src": "clients/madhura.webp",
+      "width": 95,
+      "height": 84
+    },
+    "posliva.png": {
+      "src": "clients/posliva.webp",
+      "width": 160,
+      "height": 160
+    },
+    "rd-print-pack.png": {
+      "src": "clients/rd-print-pack.webp",
+      "width": 320,
+      "height": 140
+    },
+    "sunshine-industries.png": {
+      "src": "clients/sunshine-industries.webp",
+      "width": 320,
+      "height": 79
+    },
+    "tool-tech-toolings.png": {
+      "src": "clients/tool-tech-toolings.webp",
+      "width": 320,
+      "height": 83
+    },
+    "dvsa.webp": {
+      "src": "clients/dvsa.webp",
+      "width": 160,
+      "height": 160
+    }
+  },
+  "brand": {
+    "logo": {
+      "width": 675,
+      "height": 98
+    }
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "comprehensive-guide-to-etp-and-stp-operations",
+    "title": "Comprehensive Guide to ETP & STP Operations",
+    "date": "Jul 10, 2026",
+    "category": "Water Treatment",
+    "excerpt": "A deep dive into the technical maintenance, biological parameters, and regulatory compliance for Effluent and Sewage Treatment Plants."
+  },
+  {
+    "slug": "zero-liquid-discharge-the-future-of-industry",
+    "title": "Zero Liquid Discharge (ZLD): The Future of Industry",
+    "date": "Jul 05, 2026",
+    "category": "Technology",
+    "excerpt": "An advanced technical overview of ZLD mechanics, exploring RO membranes, evaporators, and crystallizers."
+  },
+  {
+    "slug": "mastering-mpcb-consent-procedures",
+    "title": "Mastering MPCB Consent Procedures (CTE/CTO)",
+    "date": "Jun 28, 2026",
+    "category": "Compliance",
+    "excerpt": "A definitive guide to obtaining and maintaining Consent to Establish and Consent to Operate in Maharashtra."
+  },
+  {
+    "slug": "air-pollution-control-scrubbers-vs-baghouse-filters",
+    "title": "Air Pollution Control: Scrubbers vs. Baghouse Filters",
+    "date": "Jun 20, 2026",
+    "category": "Air Quality",
+    "excerpt": "A technical comparative analysis of wet and dry air pollution control devices for industrial chimneys."
+  },
+  {
+    "slug": "a-guide-to-flawless-environmental-audits",
+    "title": "A Guide to flawless Environmental Audits",
+    "date": "Jun 15, 2026",
+    "category": "Audits",
+    "excerpt": "Detailed methodologies and checklists to guarantee zero non-compliances during regulatory inspections."
+  },
+  {
+    "slug": "decoding-plastic-waste-management",
+    "title": "Decoding Plastic Waste Management (EPR)",
+    "date": "Jun 10, 2026",
+    "category": "Compliance",
+    "excerpt": "Extended Producer Responsibility explained: Targets, portals, certificates, and heavy environmental compensations."
+  },
+  {
+    "slug": "bio-medical-waste-segregation-protocols",
+    "title": "Bio-Medical Waste Segregation Protocols",
+    "date": "Jun 02, 2026",
+    "category": "Waste Management",
+    "excerpt": "Life-saving technical protocols for hospitals on color-coding, barcoding, and safe disposal of BMW."
+  },
+  {
+    "slug": "groundwater-extraction-and-cgwa-compliance",
+    "title": "Groundwater Extraction & CGWA Compliance",
+    "date": "May 25, 2026",
+    "category": "Compliance",
+    "excerpt": "Understanding telemetry, water audits, and the stringent process for obtaining a CGWA NOC."
+  },
+  {
+    "slug": "industrial-noise-pollution-and-abatement",
+    "title": "Industrial Noise Pollution & Abatement",
+    "date": "May 18, 2026",
+    "category": "Monitoring",
+    "excerpt": "Technical strategies for mapping noise contours and implementing acoustic enclosures for heavy machinery."
+  },
+  {
+    "slug": "mastering-the-hazardous-waste-manifest",
+    "title": "Mastering the Hazardous Waste Manifest (Form 10)",
+    "date": "May 10, 2026",
+    "category": "Waste Management",
+    "excerpt": "A deep technical dive into cradle-to-grave tracking of hazardous waste using the 7-color manifest system."
+  },
+  {
+    "slug": "the-science-of-treatability-studies",
+    "title": "The Science of Treatability Studies",
+    "date": "May 02, 2026",
+    "category": "Technology",
+    "excerpt": "Why lab-scale testing of chemical dosing and biological degradation is the only way to design a functional ETP."
+  },
+  {
+    "slug": "online-continuous-emission-monitoring",
+    "title": "Online Continuous Emission Monitoring (OCEMS)",
+    "date": "Apr 25, 2026",
+    "category": "Monitoring",
+    "excerpt": "Inside the real-time telemetry systems that stream compliance data directly to CPCB servers 24/7."
+  },
+  {
+    "slug": "industrial-rainwater-harvesting",
+    "title": "Industrial Rainwater Harvesting (RWH)",
+    "date": "Apr 18, 2026",
+    "category": "Sustainability",
+    "excerpt": "Engineering massive recharge structures to offset extraction and build true water independence."
+  },
+  {
+    "slug": "preventing-reverse-osmosis-membrane-failure",
+    "title": "Preventing Reverse Osmosis (RO) Membrane Failure",
+    "date": "Apr 10, 2026",
+    "category": "Water Treatment",
+    "excerpt": "Technical deep-dive into combating organic fouling, inorganic scaling, and catastrophic membrane oxidation."
+  },
+  {
+    "slug": "environmental-impact-assessment-dynamics",
+    "title": "Environmental Impact Assessment (EIA) Dynamics",
+    "date": "Apr 02, 2026",
+    "category": "Clearances",
+    "excerpt": "A deep analysis of the 4-stage EIA process required to obtain supreme Environmental Clearance (EC) in India."
+  },
+  {
+    "slug": "retrofitting-and-upgrading-aging-etps",
+    "title": "Retrofitting & Upgrading Aging ETPs",
+    "date": "Mar 25, 2026",
+    "category": "Technology",
+    "excerpt": "Strategic engineering techniques to double the capacity and efficiency of an old ETP without buying new land."
+  },
+  {
+    "slug": "the-strategic-value-of-form-v",
+    "title": "The Strategic Value of Form V (Environmental Statement)",
+    "date": "Mar 15, 2026",
+    "category": "Compliance",
+    "excerpt": "Why Form V is far more than a clerical task, acting as the ultimate balance sheet of your environmental footprint."
+  },
+  {
+    "slug": "stack-emission-monitoring-the-isokinetic-rule",
+    "title": "Stack Emission Monitoring: The Isokinetic Rule",
+    "date": "Mar 05, 2026",
+    "category": "Air Quality",
+    "excerpt": "The critical science behind accurate stack sampling, porthole placement, and avoiding legal disputes over invalid data."
+  },
+  {
+    "slug": "hazardous-waste-storage-design-and-safety-protocols",
+    "title": "Hazardous Waste Storage: Design & Safety Protocols",
+    "date": "Feb 28, 2026",
+    "category": "Waste Management",
+    "excerpt": "Engineering a legally compliant, leak-proof, and fire-safe hazardous waste storage facility inside your plant."
+  },
+  {
+    "slug": "circular-economy-the-future-of-green-manufacturing",
+    "title": "Circular Economy: The Future of Green Manufacturing",
+    "date": "Feb 20, 2026",
+    "category": "Sustainability",
+    "excerpt": "Transitioning from compliance to profitability through co-processing, ESG metrics, and resource recovery."
+  }
+]

@@ -1,16 +1,17 @@
+# Files that must NOT be published to the live website (Cloudflare static assets).
 node_modules
-node_modules/**/*
 .wrangler
-.wrangler/**/*
 .git
-.git/**/*
 .vscode
-.vscode/**/*
-package-lock.json
+.gitignore
+.assetsignore
+wrangler.jsonc
 package.json
+package-lock.json
 tailwind.config.js
-postcss.config.js
+src
 scripts
-scripts/**/*
+assets/css/main-source.css
 *.md
 *.log
+.gitattributes

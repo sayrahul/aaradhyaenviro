@@ -1,239 +1,71 @@
-# Aaradhya Enviro Website
+# Aaradhya Enviro – website
 
-## 🌐 Overview
-Professional environmental consultancy services website for Aaradhya Enviro, based in Sambhajinagar (Aurangabad), Maharashtra, India.
+Static website for Aaradhya Enviro (environmental consultancy, Waluj MIDC, Chhatrapati Sambhajinagar).
+Live: https://aaradhyaenviro.com · Hosted on Cloudflare (Workers static assets).
 
-## 📁 Project Structure
-```
-aaradhya-2/
-├── assets/
-│   ├── css/
-│   │   ├── main.css          # Compiled Tailwind CSS
-│   │   ├── main-source.css   # Source CSS for Tailwind
-│   │   └── layout.css        # Carousel/layout styles
-│   ├── js/
-│   │   ├── main.js           # Main JavaScript module
-│   │   └── main.min.js       # Minified version
-│   ├── fonts/                # Web fonts
-│   ├── gallery/              # Gallery images
-│   ├── Clients/              # Client logos
-│   ├── Products/             # Product images
-│   └── images/               # General images
-├── services/                 # Service pages (25 files)
-├── scripts/                  # Build and utility scripts
-├── *.html                    # Main pages (10 files)
-├── sitemap.xml              # SEO sitemap
-├── robots.txt               # Search engine directives
-├── package.json             # Dependencies and scripts
-├── tailwind.config.js       # Tailwind configuration
-└── postcss.config.js        # PostCSS configuration
-```
+The HTML in the repository root is **generated**. Edit the sources in `src/`, then run `npm run build`.
+Never hand-edit `index.html`, `services/*.html`, `blog/*.html` etc. — the next build overwrites them.
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js v16 or higher
-- npm v7 or higher
-
-### Installation
-```bash
-# Install dependencies
-npm install
-
-# Development mode (watch CSS changes)
-npm run dev
-
-# Production build (optimized)
-npm run build
-```
-
-## 📜 Available Scripts
+## Quick start
 
 ```bash
-# Development
-npm run dev              # Watch CSS changes in development
-
-# Production
-npm run build            # Build optimized CSS and minify JS
-npm run css:build        # Build and minify CSS only
-npm run js:minify        # Minify JavaScript only
-
-# Utilities
-npm run generate:sitemap # Generate sitemap.xml
-npm run optimize:images  # Image optimization guide
+npm install          # once
+npm run build        # regenerate HTML, CSS, JS, sitemap (≈5 s)
+npm run preview      # http://localhost:8080 with clean URLs, like Cloudflare
+npm run images       # only after adding/replacing photos or logos
 ```
 
-## 🎨 Technology Stack
+Requires Node.js 18+.
 
-- **HTML5** - Semantic markup
-- **Tailwind CSS v3.4.17** - Utility-first CSS framework
-- **Vanilla JavaScript** - No framework dependencies
-- **PostCSS** - CSS processing
-- **Node.js** - Build tools
+## Where things live
 
-## 📊 Performance Targets
+| What to change | File |
+|---|---|
+| Phone, email, address, stats, social links, GA4 id, form endpoints | `src/config.js` |
+| The 17 service pages (text, FAQs, process, regulations) | `src/data/services.js` |
+| Testimonials, homepage FAQs, products, values | `src/data/content.js` |
+| Client logos (order and names) | `src/data/clients.js` + files in `src/images/clients/` |
+| Photos and their alt text | `src/data/images.js` + files in `src/images/photos/` |
+| Blog posts | `src/content/posts.json` (meta) + `src/content/posts/<slug>.html` (body) + image/service mapping in `src/data/posts.js` |
+| Privacy policy / terms text | `src/content/privacy.html`, `src/content/terms.html` |
+| Page layouts | `src/pages/*.js` |
+| Header, footer, menus, call-back dialog | `src/lib/layout.js` |
+| Shared sections (FAQ, CTA, cards…) | `src/lib/components.js` |
+| Structured data (JSON-LD) | `src/lib/schema.js` |
+| Icons | `src/lib/icons.js` (compiled to `assets/icons.svg`) |
+| Styles | `assets/css/main-source.css` (Tailwind 3) |
+| Browser JS | `src/js/site.js` (minified to `assets/js/site.js`) |
 
-### Before Optimization
-- Page Load: 3-4 seconds
-- CSS Size: ~200KB
-- Total Weight: 2-3MB
-- Lighthouse Score: 65-75
+## Build output
 
-### After Optimization
-- Page Load: 1-1.5 seconds ⚡
-- CSS Size: ~15-20KB 📉
-- Total Weight: 500KB-1MB 🎯
-- Lighthouse Score: 90-95 🏆
+`scripts/build.js` writes:
 
-## ✅ Features
+- `*.html`, `services/*.html`, `blog/*.html` (49 pages)
+- `assets/css/main.css`, `assets/js/site.js`, `assets/icons.svg` — referenced with `?v=<hash>` for cache-busting
+- `sitemap.xml` (with image entries), `robots.txt`, `site.webmanifest`
 
-### Implemented
-- ✅ Responsive design (mobile-first)
-- ✅ SEO optimized (meta tags, structured data)
-- ✅ Accessibility features (ARIA, keyboard navigation)
-- ✅ Mobile menu with focus trap
-- ✅ Desktop dropdown menus
-- ✅ Lazy loading images
-- ✅ Form validation
-- ✅ Skip navigation links
-- ✅ Sitemap generation
+It then checks every page for broken internal links, missing files, title/description length,
+a single `<h1>` and duplicate ids, and exits non-zero if anything fails.
 
-### Pending
-- ⏳ Image optimization (WebP conversion)
-- ⏳ Service worker (offline support)
-- ⏳ Progressive Web App features
+`scripts/images.js` converts `src/images/**` into responsive WebP files in `assets/img/`,
+generates `favicon.ico`, `apple-touch-icon.png`, PWA icons and the 1200×630 social image,
+and records real dimensions in `src/data/image-meta.json`.
 
-## 🔧 Configuration
+## Hosting notes (Cloudflare)
 
-### Tailwind CSS
-Edit `tailwind.config.js` to customize:
-- Colors
-- Fonts
-- Breakpoints
-- Plugins
+- `wrangler.jsonc` – static assets from the repo root, clean URLs (`/about` serves `about.html`; `/about.html` redirects), `404.html` for unknown URLs.
+- `_headers` – security headers (CSP, HSTS, nosniff, …) and long-term caching for hashed assets.
+- `_redirects` – a few legacy redirects.
+- `.assetsignore` – keeps `src/`, `scripts/`, config and docs off the live site.
 
-### Build Process
-Edit `package.json` scripts to modify:
-- Build commands
-- Output paths
-- Optimization settings
+If you add a new third-party script, embed or form endpoint, allow its domain in the
+`Content-Security-Policy` in `_headers`, otherwise the browser will block it.
 
-## 📱 Browser Support
+## Adding a blog post
 
-- Chrome (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Edge (last 2 versions)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+1. Add an entry to `src/content/posts.json` (`slug`, `title`, `date` like `Oct 18, 2026`, `category`, `excerpt`).
+2. Create `src/content/posts/<slug>.html` with the article body (use `<h2>`, `<h3>`, `<p>`, `<ul>`, tables, `<aside class="callout">`).
+3. Add `'<slug>': { image: '<photo key>', service: '<service slug>' }` in `src/data/posts.js`.
+4. `npm run build`.
 
-## 🔒 Security
-
-- Content Security Policy headers
-- XSS protection
-- CSRF protection on forms
-- Input validation and sanitization
-- Secure headers (.htaccess)
-
-## 📈 SEO
-
-- Comprehensive meta tags
-- Open Graph tags
-- Twitter Card tags
-- JSON-LD structured data
-- Sitemap.xml
-- robots.txt
-- Canonical URLs
-- Geo-location tags
-
-## ♿ Accessibility
-
-- WCAG 2.1 Level AA compliant
-- Semantic HTML5
-- ARIA attributes
-- Keyboard navigation
-- Focus management
-- Screen reader support
-- Skip navigation links
-
-## 📝 Content Management
-
-### Adding a New Service Page
-1. Copy an existing service page from `/services/`
-2. Update meta tags (title, description, keywords)
-3. Update JSON-LD structured data
-4. Update page content
-5. Add to navigation menu
-6. Regenerate sitemap: `npm run generate:sitemap`
-
-### Updating Images
-1. Optimize images before uploading
-2. Use WebP format with JPG/PNG fallback
-3. Add `loading="lazy"` attribute
-4. Include width and height attributes
-5. Use descriptive alt text
-
-## 🐛 Troubleshooting
-
-### CSS not updating
-```bash
-# Clear cache and rebuild
-rm -rf node_modules/.cache
-npm run build
-```
-
-### JavaScript errors
-- Check browser console
-- Verify main.js is loaded
-- Check for conflicting scripts
-
-### Images not loading
-- Verify file paths are correct
-- Check file permissions
-- Ensure images are in correct directory
-
-## 📞 Support
-
-For issues or questions:
-- Email: aaradhyaenviro07@gmail.com
-- Phone: 99759 29212
-- Location: Sambhajinagar (Aurangabad), Maharashtra
-
-## 📄 License
-
-Copyright © 2024 Aaradhya Enviro. All rights reserved.
-
-## 🔄 Version History
-
-### Version 2.0.0 (Current)
-- ✅ Consolidated JavaScript
-- ✅ Optimized CSS build process
-- ✅ Added accessibility features
-- ✅ Generated sitemap
-- ✅ Improved performance
-- ✅ Enhanced SEO
-
-### Version 1.0.0
-- Initial website launch
-- Basic HTML/CSS structure
-- Service pages
-- Contact form
-
-## 📚 Documentation
-
-- [Implementation Guide](IMPLEMENTATION_GUIDE.md) - Step-by-step setup
-- [Content Fix Guide](CONTENT_FIX_GUIDE.md) - Content consistency fixes
-- [Audit Report](AUDIT_REPORT.md) - Complete website audit
-
-## 🎯 Next Steps
-
-1. Complete manual implementation steps (see IMPLEMENTATION_GUIDE.md)
-2. Fix content inconsistencies (see CONTENT_FIX_GUIDE.md)
-3. Optimize images
-4. Test across browsers
-5. Deploy to production
-6. Monitor performance
-
----
-
-**Last Updated:** 2024
-**Maintained by:** Aaradhya Enviro Development Team
+See `OWNER-GUIDE.md` for the go-live checklist and the tasks that need the owner's accounts.

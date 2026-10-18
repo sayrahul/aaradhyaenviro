@@ -1,0 +1,4 @@
+# Cloudflare static-asset redirects. (/page.html -> /page is handled automatically.)
+/index               /               301
+/home                /               301
+/image-sitemap.xml   /sitemap.xml    301
