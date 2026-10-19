@@ -110,7 +110,7 @@ function clientsSection({ limit, title = 'Trusted by industry leaders', lead = '
   <div class="container-x">
     ${sectionHead({ eyebrow: 'Our clients', title: esc(title), lead: esc(lead), id: 'clients-title' })}
     <ul class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-      ${list.map(c => `<li class="flex h-28 items-center justify-center rounded-xl border border-gray-200 bg-white p-4" title="${esc(c.name)}">${clientLogo(c, 'max-h-16 w-auto max-w-full object-contain')}</li>`).join('\n      ')}
+      ${list.map(c => `<li class="flex h-28 items-center justify-center rounded-xl border p-4 ${c.dark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}"${c.name ? ` title="${esc(c.name)}"` : ''}>${clientLogo(c, 'max-h-16 w-auto max-w-full object-contain')}</li>`).join('\n      ')}
     </ul>
     ${limit && clients.length > limit ? `<p class="mt-8 text-center"><a href="/about#clients" class="inline-flex items-center gap-1.5 font-semibold text-emerald-700 hover:text-emerald-800">See all ${clients.length} clients ${icon('arrow-right', 'w-4 h-4')}</a></p>` : ''}
   </div>

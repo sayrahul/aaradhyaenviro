@@ -254,113 +254,78 @@
     }
   },
   "clients": {
-    "shapoorji-pallonji.svg": {
-      "src": "clients/shapoorji-pallonji.svg",
-      "width": 180,
-      "height": 34
+    "keller.jpg": {
+      "src": "clients/keller.webp",
+      "width": 200,
+      "height": 58
     },
-    "shimizu-corporation.jpeg": {
-      "src": "clients/shimizu-corporation.webp",
-      "width": 320,
-      "height": 94
-    },
-    "harman.png": {
-      "src": "clients/harman.webp",
-      "width": 244,
-      "height": 81
-    },
-    "nhk.png": {
-      "src": "clients/nhk.webp",
-      "width": 320,
-      "height": 31
-    },
-    "atul.jpeg": {
+    "atul.jpg": {
       "src": "clients/atul.webp",
       "width": 160,
       "height": 160
     },
-    "parason.svg": {
-      "src": "clients/parason.svg",
-      "width": 724,
-      "height": 114
-    },
-    "renuka-sugar-renapur.jpeg": {
-      "src": "clients/renuka-sugar-renapur.webp",
-      "width": 213,
-      "height": 160
-    },
-    "bai-kakaji-group.jpeg": {
-      "src": "clients/bai-kakaji-group.webp",
-      "width": 320,
-      "height": 137
-    },
-    "rohan-builders.jpeg": {
+    "rohan-builders.jpg": {
       "src": "clients/rohan-builders.webp",
       "width": 320,
-      "height": 113
+      "height": 62
     },
-    "sj-contracts.jpeg": {
+    "vmc-vijay-mistry-construction.jpg": {
+      "src": "clients/vmc-vijay-mistry-construction.webp",
+      "width": 320,
+      "height": 119
+    },
+    "sj-contracts.jpg": {
       "src": "clients/sj-contracts.webp",
       "width": 198,
       "height": 160
     },
-    "adora-products.webp": {
-      "src": "clients/adora-products.webp",
+    "bai-kakaji-group.jpg": {
+      "src": "clients/bai-kakaji-group.webp",
       "width": 320,
-      "height": 77
+      "height": 54
     },
-    "cast-4-aluminium.png": {
-      "src": "clients/cast-4-aluminium.webp",
-      "width": 319,
+    "manjara-sakhar-karkhana.jpg": {
+      "src": "clients/manjara-sakhar-karkhana.webp",
+      "width": 161,
       "height": 160
     },
-    "chandra-electricals.png": {
-      "src": "clients/chandra-electricals.webp",
-      "width": 320,
-      "height": 48
+    "rena-sugar-renapur.jpg": {
+      "src": "clients/rena-sugar-renapur.webp",
+      "width": 213,
+      "height": 160
     },
-    "rayon-illuminations.png": {
-      "src": "clients/rayon-illuminations.webp",
-      "width": 261,
+    "jagruti.jpg": {
+      "src": "clients/jagruti.webp",
+      "width": 181,
+      "height": 160
+    },
+    "kohinoor-feeds-fats.jpg": {
+      "src": "clients/kohinoor-feeds-fats.webp",
+      "width": 320,
       "height": 89
     },
-    "fintek.png": {
-      "src": "clients/fintek.webp",
-      "width": 226,
+    "shree-samarth.jpg": {
+      "src": "clients/shree-samarth.webp",
+      "width": 318,
       "height": 160
     },
-    "gubba-cold-storage.gif": {
-      "src": "clients/gubba-cold-storage.webp",
-      "width": 146,
-      "height": 107
-    },
-    "madhura.png": {
-      "src": "clients/madhura.webp",
-      "width": 95,
-      "height": 84
-    },
-    "posliva.png": {
-      "src": "clients/posliva.webp",
-      "width": 160,
+    "shrinivasa-agro-foods.jpg": {
+      "src": "clients/shrinivasa-agro-foods.webp",
+      "width": 222,
       "height": 160
     },
-    "rd-print-pack.png": {
-      "src": "clients/rd-print-pack.webp",
-      "width": 320,
-      "height": 140
+    "blueplanet.jpg": {
+      "src": "clients/blueplanet.webp",
+      "width": 289,
+      "height": 160
     },
-    "sunshine-industries.png": {
-      "src": "clients/sunshine-industries.webp",
-      "width": 320,
-      "height": 79
+    "client-green-builders.jpg": {
+      "src": "clients/client-green-builders.webp",
+      "width": 203,
+      "height": 117
     },
-    "tool-tech-toolings.png": {
-      "src": "clients/tool-tech-toolings.webp",
-      "width": 320,
-      "height": 83
-    },
-    "dvsa.webp": {
-      "src": "clients/dvsa.webp",
+    "client-green-m.jpg": {
+      "src": "clients/client-green-m.webp",
       "width": 160,
       "height": 160
     }

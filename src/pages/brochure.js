@@ -156,7 +156,7 @@ module.exports = () => {
     // 7 — Clients & testimonials
     sheet(7, `
     ${h(6, `Trusted by ${site.clientsCount} clients`, 'Clients & feedback')}
-    <ul class="grid grid-cols-3 gap-3 md:grid-cols-5">${clients.map(c => `<li class="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white p-2">${clientLogo(c, 'max-h-10 w-auto max-w-full object-contain', { lazy: false })}</li>`).join('')}</ul>
+    <ul class="grid grid-cols-3 gap-3 md:grid-cols-5">${clients.map(c => `<li class="flex h-16 items-center justify-center rounded-lg border p-2 ${c.dark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}">${clientLogo(c, 'max-h-12 w-auto max-w-full object-contain', { lazy: false })}</li>`).join('')}</ul>
     <h3 class="mt-8 text-lg font-bold text-gray-900">What our clients say</h3>
     <div class="mt-4 grid gap-4 md:grid-cols-2">${testimonials.slice(0, 4).map(t => `<figure class="rounded-xl bg-gray-50 p-5">
       ${icon('quote', 'w-6 h-6 text-emerald-600')}

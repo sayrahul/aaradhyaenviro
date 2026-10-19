@@ -47,7 +47,7 @@ function logoImg(cls = 'h-10 w-auto', { eager = false } = {}) {
 
 function clientLogo(c, cls = '', { lazy = true } = {}) {
   const m = imageMeta.clients[c.file];
-  return `<img src="/assets/img/${m.src}" width="${m.width}" height="${m.height}" alt="${esc(c.name)} logo" class="${cls}"${lazy ? ' loading="lazy"' : ''} decoding="async">`;
+  return `<img src="/assets/img/${m.src}" width="${m.width}" height="${m.height}" alt="${c.name ? `${esc(c.name)} logo` : 'Client logo'}" class="${cls}"${lazy ? ' loading="lazy"' : ''} decoding="async">`;
 }
 
 const waLink = (text = 'Hello Aaradhya Enviro, I would like to know more about your environmental services.') =>

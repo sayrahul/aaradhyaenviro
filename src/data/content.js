@@ -7,7 +7,7 @@ const testimonials = [
   { quote: 'Getting Environmental Clearance for our expansion project seemed impossible until we partnered with Aaradhya Enviro. They managed everything from EIA to the public hearing. Excellent team!', name: 'Priya Deshmukh', role: 'CEO, Aurangabad Infrastructure' },
   { quote: 'Our ZLD system was installed on time and within budget. The design team understood our specific chemical effluent requirements and delivered a solution that works perfectly for us.', name: 'Anil Joshi', role: 'Works Manager, Nashik Chemical Plant' },
   { quote: 'We trust Aaradhya Enviro for our annual environmental audit and MPCB Form IV/V submissions. Their thoroughness gives us full confidence during regulatory inspections.', name: 'Vikram Kulkarni', role: 'EHS Head, Pune Auto Components' },
-  { quote: 'Aaradhya Enviro guided us through our entire MPCB consent process and installed a fully functional ETP. Their technical knowledge and post-installation support is exceptional.', name: 'Senior Manager', role: 'Renuka Sugar, Renapur' },
+  { quote: 'Aaradhya Enviro guided us through our entire MPCB consent process and installed a fully functional ETP. Their technical knowledge and post-installation support is exceptional.', name: 'Senior Manager', role: 'Rena Sugar, Renapur' },
 ];
 
 const homeFaqs = [
